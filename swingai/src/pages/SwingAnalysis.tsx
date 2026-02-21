@@ -4,7 +4,6 @@ import Icon from '@mdi/react';
 import { colors } from '../theme';
 import {
   mdiUpload,
-  mdiVideo,
   mdiPlay,
   mdiPause,
   mdiRewind,
@@ -173,7 +172,7 @@ const SwingAnalysis: React.FC = () => {
 
   const getScoreColor = (score: number) => {
     if (score >= 85) return 'var(--success-color)';
-    if (score >= 70) return 'var(--primary-color)';
+    if (score >= 70) return '#60A5FA';
     if (score >= 50) return 'var(--warning-color)';
     return 'var(--danger-color)';
   };
@@ -568,7 +567,7 @@ const SwingAnalysis: React.FC = () => {
                   </motion.div>
                 ) : (
                   <div className="card" style={{ padding: 24, textAlign: 'center' }}>
-                    <Icon path={mdiVideo} size={3} color="var(--text-secondary)" style={{ marginBottom: 16 }} />
+                    <div style={{ fontSize: '3rem', marginBottom: 16, display: 'flex', justifyContent: 'center' }}>🎬</div>
                     <h3>Ready to Analyze</h3>
                     <p style={{ color: 'var(--text-secondary)', marginTop: 8 }}>
                       Click "Analyze Swing" to get AI-powered insights
@@ -611,12 +610,12 @@ const SwingAnalysis: React.FC = () => {
                           justifyContent: 'center',
                           flexDirection: 'column'
                         }}>
-                          <span style={{ fontSize: '1.25rem', fontWeight: 700, color: getScoreColor(value) }}>
+                          <span style={{ fontSize: '1.25rem', fontWeight: 700, color: 'white' }}>
                             {value}
                           </span>
                         </div>
                       </div>
-                      <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', textTransform: 'uppercase' }}>
+                      <span style={{ fontSize: '0.75rem', color: 'white', textTransform: 'uppercase' }}>
                         {key.replace(/([A-Z])/g, ' $1').trim()}
                       </span>
                     </div>
