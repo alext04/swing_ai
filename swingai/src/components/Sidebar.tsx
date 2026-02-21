@@ -16,10 +16,11 @@ import {
 
 interface SidebarProps {
   open: boolean;
+  onToggle: () => void;
   onClose: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
+const Sidebar: React.FC<SidebarProps> = ({ open, onToggle, onClose }) => {
   const location = useLocation();
 
   const navItems = [
@@ -36,7 +37,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
       {/* Mobile Menu Button */}
       <button
         className="mobile-menu-btn"
-        onClick={() => onClose()}
+        onClick={() => onToggle()}
         style={{
           display: 'none',
           position: 'fixed',
@@ -57,8 +58,27 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
         <Icon path={open ? mdiClose : mdiMenu} size={1} />
       </button>
 
+      {/* Mobile Backdrop */}
+      {open && (
+        <div
+          className="sidebar-backdrop"
+          onClick={onClose}
+          style={{
+            display: 'none',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0, 0, 0, 0.5)',
+            zIndex: 999,
+            backdropFilter: 'blur(4px)'
+          }}
+        />
+      )}
+
       <motion.aside
-        className="sidebar"
+        className={`sidebar ${open ? 'open' : ''}`}
         initial={false}
         animate={{ x: 0 }}
       >
@@ -93,10 +113,13 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
             display: block !important;
           }
           .sidebar {
-            transform: translateX(-100%) !important;
+            transform: translateX(calc(-100% - 24px)) !important;
           }
           .sidebar.open {
             transform: translateX(0) !important;
+          }
+          .sidebar-backdrop {
+            display: block !important;
           }
         }
       `}</style>

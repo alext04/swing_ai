@@ -8,10 +8,7 @@ import {
   mdiTrashCan,
   mdiMagnify,
   mdiChevronRight,
-  mdiClose,
-  mdiCheck,
-  mdiCricket,
-  mdiChartBar
+  mdiClose
 } from '@mdi/js';
 import { useNavigate } from 'react-router-dom';
 

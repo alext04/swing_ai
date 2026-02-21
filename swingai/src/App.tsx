@@ -33,7 +33,7 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        <Sidebar open={sidebarOpen} onToggle={() => setSidebarOpen(!sidebarOpen)} onClose={() => setSidebarOpen(false)} />
         <main className="main-content">
           <Container fluid>
             <Routes>

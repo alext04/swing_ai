@@ -537,7 +537,7 @@ h6 {
 
 @media (max-width: 768px) {
   .sidebar {
-    transform: translateX(-100%);
+    transform: translateX(calc(-100% - 24px));
     transition: transform 0.3s ease;
   }
 

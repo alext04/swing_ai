@@ -3,17 +3,12 @@ import { motion } from 'framer-motion';
 import Icon from '@mdi/react';
 import { colors } from '../theme';
 import {
-  mdiTrendingUp,
-  mdiClockOutline,
   mdiAccount,
   mdiCricket,
   mdiArrowUpRight,
   mdiArrowDownRight,
-  mdiHistory,
-  mdiCog,
   mdiHeart,
   mdiAlertCircle,
-  mdiTrophy,
   mdiAccountGroup,
   mdiChartBar,
   mdiDownload,
@@ -318,28 +313,30 @@ const Dashboard: React.FC = () => {
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: 24 }}>
                 Shot consistency over time
               </p>
-              <div style={{ height: 250 }}>
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={sampleData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke={colors.chartGridDark} />
-                    <XAxis dataKey="date" stroke={colors.chartAxisLight} />
-                    <YAxis stroke={colors.chartAxisLight} domain={[60, 100]} />
-                    <Tooltip
-                      contentStyle={{
-                        background: 'var(--card-bg)',
-                        border: '1px solid var(--border-color)',
-                        borderRadius: 'var(--radius-md)'
-                      }}
-                    />
-                    <Line
-                      type="monotone"
-                      dataKey="consistency"
-                      stroke={colors.chartSeries2}
-                      strokeWidth={3}
-                      dot={{ fill: colors.chartSeries2, strokeWidth: 2 }}
-                    />
-                  </LineChart>
-                </ResponsiveContainer>
+              <div style={{ height: 250, overflowX: 'auto', overflowY: 'hidden' }}>
+                <div style={{ minWidth: 500, height: '100%' }}>
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={sampleData}>
+                      <CartesianGrid strokeDasharray="3 3" stroke={colors.chartGridDark} />
+                      <XAxis dataKey="date" stroke={colors.chartAxisLight} />
+                      <YAxis stroke={colors.chartAxisLight} domain={[60, 100]} />
+                      <Tooltip
+                        contentStyle={{
+                          background: 'var(--card-bg)',
+                          border: '1px solid var(--border-color)',
+                          borderRadius: 'var(--radius-md)'
+                        }}
+                      />
+                      <Line
+                        type="monotone"
+                        dataKey="consistency"
+                        stroke={colors.chartSeries2}
+                        strokeWidth={3}
+                        dot={{ fill: colors.chartSeries2, strokeWidth: 2 }}
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -467,7 +464,6 @@ const Dashboard: React.FC = () => {
       ) : (
         /* Coach View */
         <>
-          {/* Coach Dashboard Stats */}
           <div className="grid-4" style={{ marginBottom: 32 }}>
             {teamStats.map((stat, index) => (
               <motion.div
@@ -597,24 +593,26 @@ const Dashboard: React.FC = () => {
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: 24 }}>
                 Weekly team metrics comparison
               </p>
-              <div style={{ height: 280 }}>
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={sampleData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke={colors.chartGridDark} />
-                    <XAxis dataKey="date" stroke={colors.chartAxisLight} />
-                    <YAxis stroke={colors.chartAxisLight} />
-                    <Tooltip
-                      contentStyle={{
-                        background: 'var(--card-bg)',
-                        border: '1px solid var(--border-color)',
-                        borderRadius: 'var(--radius-md)'
-                      }}
-                    />
-                    <Legend />
-                    <Bar name="Avg Speed" dataKey="batSpeed" fill={colors.chartSeries1} radius={[4, 4, 0, 0]} />
-                    <Bar name="Consistency" dataKey="consistency" fill={colors.chartSeries2} radius={[4, 4, 0, 0]} />
-                  </BarChart>
-                </ResponsiveContainer>
+              <div style={{ height: 280, overflowX: 'auto', overflowY: 'hidden' }}>
+                <div style={{ minWidth: 600, height: '100%' }}>
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={sampleData}>
+                      <CartesianGrid strokeDasharray="3 3" stroke={colors.chartGridDark} />
+                      <XAxis dataKey="date" stroke={colors.chartAxisLight} />
+                      <YAxis stroke={colors.chartAxisLight} />
+                      <Tooltip
+                        contentStyle={{
+                          background: 'var(--card-bg)',
+                          border: '1px solid var(--border-color)',
+                          borderRadius: 'var(--radius-md)'
+                        }}
+                      />
+                      <Legend />
+                      <Bar name="Avg Speed" dataKey="batSpeed" fill={colors.chartSeries1} radius={[4, 4, 0, 0]} />
+                      <Bar name="Consistency" dataKey="consistency" fill={colors.chartSeries2} radius={[4, 4, 0, 0]} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -999,8 +997,9 @@ const Dashboard: React.FC = () => {
             </div>
           )}
         </>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 };
 

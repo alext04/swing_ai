@@ -3,13 +3,10 @@ import { motion } from 'framer-motion';
 import Icon from '@mdi/react';
 import { colors } from '../theme';
 import {
-  mdiCalendar,
-  mdiTrendingUp,
   mdiTrophy,
   mdiTarget,
   mdiDownload,
-  mdiFilter,
-  mdiCricket
+  mdiFilter
 } from '@mdi/js';
 import {
   XAxis,
@@ -228,45 +225,47 @@ const ProgressTracking: React.FC = () => {
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: 24 }}>
             Monthly progress overview
           </p>
-          <div style={{ height: 300 }}>
-            <ResponsiveContainer width="100%" height="100%">
-              <ComposedChart data={monthlyData}>
-                <defs>
-                  <linearGradient id="colorBatSpeed" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor={colors.legacyBlue} stopOpacity={0.3} />
-                    <stop offset="95%" stopColor={colors.legacyBlue} stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke={colors.chartGrid} />
-                <XAxis dataKey="month" stroke={colors.chartAxis} />
-                <YAxis stroke={colors.chartAxis} domain={[60, 100]} />
-                <Tooltip
-                  contentStyle={{
-                    background: 'var(--card-bg)',
-                    border: '1px solid var(--border-color)',
-                    borderRadius: 'var(--radius-md)'
-                  }}
-                />
-                <Legend />
-                <Area
-                  type="monotone"
-                  dataKey="batSpeed"
-                  name="Bat Speed"
-                  stroke={colors.legacyBlue}
-                  strokeWidth={3}
-                  fillOpacity={1}
-                  fill="url(#colorBatSpeed)"
-                />
-                <Line
-                  type="monotone"
-                  dataKey="consistency"
-                  name="Consistency"
-                  stroke={colors.legacyTeal}
-                  strokeWidth={3}
-                  dot={{ fill: colors.legacyTeal, strokeWidth: 2 }}
-                />
-              </ComposedChart>
-            </ResponsiveContainer>
+          <div style={{ height: 300, overflowX: 'auto', overflowY: 'hidden' }}>
+            <div style={{ minWidth: 600, height: '100%' }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <ComposedChart data={monthlyData}>
+                  <defs>
+                    <linearGradient id="colorBatSpeed" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor={colors.legacyBlue} stopOpacity={0.3} />
+                      <stop offset="95%" stopColor={colors.legacyBlue} stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke={colors.chartGrid} />
+                  <XAxis dataKey="month" stroke={colors.chartAxis} />
+                  <YAxis stroke={colors.chartAxis} domain={[60, 100]} />
+                  <Tooltip
+                    contentStyle={{
+                      background: 'var(--card-bg)',
+                      border: '1px solid var(--border-color)',
+                      borderRadius: 'var(--radius-md)'
+                    }}
+                  />
+                  <Legend />
+                  <Area
+                    type="monotone"
+                    dataKey="batSpeed"
+                    name="Bat Speed"
+                    stroke={colors.legacyBlue}
+                    strokeWidth={3}
+                    fillOpacity={1}
+                    fill="url(#colorBatSpeed)"
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="consistency"
+                    name="Consistency"
+                    stroke={colors.legacyTeal}
+                    strokeWidth={3}
+                    dot={{ fill: colors.legacyTeal, strokeWidth: 2 }}
+                  />
+                </ComposedChart>
+              </ResponsiveContainer>
+            </div>
           </div>
         </motion.div>
 
@@ -281,24 +280,26 @@ const ProgressTracking: React.FC = () => {
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: 24 }}>
             Swings analyzed this week
           </p>
-          <div style={{ height: 300 }}>
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={weeklyActivity}>
-                <CartesianGrid strokeDasharray="3 3" stroke={colors.chartGrid} />
-                <XAxis dataKey="day" stroke={colors.chartAxis} />
-                <YAxis stroke={colors.chartAxis} />
-                <Tooltip
-                  contentStyle={{
-                    background: 'var(--card-bg)',
-                    border: '1px solid var(--border-color)',
-                    borderRadius: 'var(--radius-md)'
-                  }}
-                />
-                <Legend />
-                <Bar dataKey="swings" name="Swings" fill={colors.legacyBlue} radius={[4, 4, 0, 0]} />
-                <Bar dataKey="minutes" name="Minutes" fill={colors.legacyTeal} radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
+          <div style={{ height: 300, overflowX: 'auto', overflowY: 'hidden' }}>
+            <div style={{ minWidth: 600, height: '100%' }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={weeklyActivity}>
+                  <CartesianGrid strokeDasharray="3 3" stroke={colors.chartGrid} />
+                  <XAxis dataKey="day" stroke={colors.chartAxis} />
+                  <YAxis stroke={colors.chartAxis} />
+                  <Tooltip
+                    contentStyle={{
+                      background: 'var(--card-bg)',
+                      border: '1px solid var(--border-color)',
+                      borderRadius: 'var(--radius-md)'
+                    }}
+                  />
+                  <Legend />
+                  <Bar dataKey="swings" name="Swings" fill={colors.legacyBlue} radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="minutes" name="Minutes" fill={colors.legacyTeal} radius={[4, 4, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           </div>
         </motion.div>
       </div>
@@ -355,12 +356,12 @@ const ProgressTracking: React.FC = () => {
             </tbody>
           </table>
         </div>
-      </motion.div>
+      </motion.div >
 
       {/* Achievements & Milestones */}
-      <div className="grid-2" style={{ marginBottom: 32 }}>
+      < div className="grid-2" style={{ marginBottom: 32 }}>
         {/* Achievements */}
-        <motion.div
+        < motion.div
           className="card"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -402,10 +403,10 @@ const ProgressTracking: React.FC = () => {
               </div>
             ))}
           </div>
-        </motion.div>
+        </motion.div >
 
         {/* Milestones Timeline */}
-        <motion.div
+        < motion.div
           className="card"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -456,11 +457,11 @@ const ProgressTracking: React.FC = () => {
               </div>
             ))}
           </div>
-        </motion.div>
-      </div>
+        </motion.div >
+      </div >
 
       {/* Goals Section */}
-      <motion.div
+      < motion.div
         className="card"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -514,8 +515,8 @@ const ProgressTracking: React.FC = () => {
             </span>
           </div>
         </div>
-      </motion.div>
-    </div>
+      </motion.div >
+    </div >
   );
 };
 

@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import Icon from '@mdi/react';
 import { colors } from '../theme';
 import {
-  mdiHeart,
   mdiArrowLeft,
   mdiMagnify,
   mdiDownload,

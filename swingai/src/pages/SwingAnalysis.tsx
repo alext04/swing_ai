@@ -11,7 +11,6 @@ import {
   mdiFastForward,
   mdiCheckCircle,
   mdiAlertCircle,
-  mdiInformation,
   mdiDownload,
   mdiShare,
   mdiTrashCan,
@@ -41,7 +40,7 @@ interface AnalysisResult {
 }
 
 const SwingAnalysis: React.FC = () => {
-  const [_videoFile, setVideoFile] = useState<File | null>(null);
+  const [, setVideoFile] = useState<File | null>(null);
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analysisComplete, setAnalysisComplete] = useState(false);
@@ -468,8 +467,8 @@ const SwingAnalysis: React.FC = () => {
                     {/* Overall Score Card */}
                     <div
                       className={`analysis-card ${mockAnalysisResult.overallScore >= 85 ? 'excellent' :
-                          mockAnalysisResult.overallScore >= 70 ? 'good' :
-                            mockAnalysisResult.overallScore >= 50 ? 'needs-improvement' : 'poor'
+                        mockAnalysisResult.overallScore >= 70 ? 'good' :
+                          mockAnalysisResult.overallScore >= 50 ? 'needs-improvement' : 'poor'
                         }`}
                       style={{ padding: 24, textAlign: 'center' }}
                     >
