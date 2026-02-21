@@ -1,0 +1,67 @@
+{
+  "background": {
+    "dark": "#0D1d3f",
+    "card": "#113Eic",
+    "cardHover": "#Ceed7b",
+    "darkNeutral": "#0D1d3f"
+  },
+  "primary": {
+    "main": "#113E1c",
+    "light": "#1a5226",
+    "dark": "#0d2f15"
+  },
+  "accent": {
+    "main": "#ceed7b",
+    "hover": "#c4e56b",
+    "light": "#e8f5c9",
+    "gold": "#f9e076",
+    "goldEnd": "#a3c94a"
+  },
+  "text": {
+    "primary": "#000000",
+    "secondary": "0D1D3E",
+    "muted": "#000000"
+  },
+  "border": {
+    "main": "#1f5229",
+    "light": "#333333"
+  },
+  "semantic": {
+    "success": "#4ade80",
+    "warning": "#fbbf24",
+    "danger": "#f87171",
+    "info": "#60a5fa"
+  },
+  "chart": {
+    "grid": "#333333",
+    "gridDark": "#1f5229",
+    "axis": "#666666",
+    "axisLight": "#a7f3a7",
+    "series1": "#ceed7b",
+    "series2": "#4ade80",
+    "series3": "#fbbf24",
+    "legacyBlue": "#1a73e8",
+    "legacyTeal": "#00bfa5"
+  },
+  "injuryStatus": {
+    "fit": "#4ade80",
+    "minor": "#fbbf24",
+    "major": "#f87171",
+    "default": "#a7f3a7"
+  },
+  "colorPickerOptions": [
+    "#1a73e8",
+    "#00bfa5",
+    "#ff6b35",
+    "#00c853",
+    "#f44336",
+    "#9c27b0"
+  ],
+  "shadows": {
+    "accent": "rgba(206, 237, 123, 0.3)",
+    "lg": "rgba(17, 62, 28, 0.6)",
+    "md": "rgba(17, 62, 28, 0.4)",
+    "sm": "rgba(17, 62, 28, 0.3)",
+    "cardGlow": "rgba(206, 237, 123, 0.15)"
+  }
+}
