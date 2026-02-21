@@ -33,10 +33,10 @@ interface Player {
 }
 
 const initialPlayers: Player[] = [
-  { 
-    id: 1, 
-    name: 'Rohit Sharma', 
-    role: 'Opening Batsman', 
+  {
+    id: 1,
+    name: 'Rohit Sharma',
+    role: 'Opening Batsman',
     battingStyle: 'Right-handed',
     age: 36,
     matchesPlayed: 24,
@@ -49,10 +49,10 @@ const initialPlayers: Player[] = [
     email: 'rohit.sharma@team.com',
     phone: '+91 98765 43210'
   },
-  { 
-    id: 2, 
-    name: 'Virat Kohli', 
-    role: 'Top Order Batsman', 
+  {
+    id: 2,
+    name: 'Virat Kohli',
+    role: 'Top Order Batsman',
     battingStyle: 'Right-handed',
     age: 35,
     matchesPlayed: 28,
@@ -65,10 +65,10 @@ const initialPlayers: Player[] = [
     email: 'virat.kohli@team.com',
     phone: '+91 98765 43211'
   },
-  { 
-    id: 3, 
-    name: 'KL Rahul', 
-    role: 'Wicket-keeper Batsman', 
+  {
+    id: 3,
+    name: 'KL Rahul',
+    role: 'Wicket-keeper Batsman',
     battingStyle: 'Right-handed',
     age: 31,
     matchesPlayed: 20,
@@ -81,10 +81,10 @@ const initialPlayers: Player[] = [
     email: 'kl.rahul@team.com',
     phone: '+91 98765 43212'
   },
-  { 
-    id: 4, 
-    name: 'Shreyas Iyer', 
-    role: 'Middle Order Batsman', 
+  {
+    id: 4,
+    name: 'Shreyas Iyer',
+    role: 'Middle Order Batsman',
     battingStyle: 'Right-handed',
     age: 29,
     matchesPlayed: 18,
@@ -97,10 +97,10 @@ const initialPlayers: Player[] = [
     email: 'shreyas.iyer@team.com',
     phone: '+91 98765 43213'
   },
-  { 
-    id: 5, 
-    name: 'Hardik Pandya', 
-    role: 'All-rounder', 
+  {
+    id: 5,
+    name: 'Hardik Pandya',
+    role: 'All-rounder',
     battingStyle: 'Right-handed',
     age: 30,
     matchesPlayed: 22,
@@ -113,10 +113,10 @@ const initialPlayers: Player[] = [
     email: 'hardik.pandya@team.com',
     phone: '+91 98765 43214'
   },
-  { 
-    id: 6, 
-    name: 'Rishabh Pant', 
-    role: 'Wicket-keeper Batsman', 
+  {
+    id: 6,
+    name: 'Rishabh Pant',
+    role: 'Wicket-keeper Batsman',
     battingStyle: 'Left-handed',
     age: 26,
     matchesPlayed: 19,
@@ -182,7 +182,7 @@ const TeamManagement: React.FC = () => {
   };
 
   const getInjuryColor = (status: string) => {
-    switch(status) {
+    switch (status) {
       case 'fit': return colors.injuryFit;
       case 'minor': return colors.injuryMinor;
       case 'major': return colors.injuryMajor;
@@ -221,81 +221,53 @@ const TeamManagement: React.FC = () => {
 
       {/* Team Stats */}
       <div className="grid-4" style={{ marginBottom: 32 }}>
-        <motion.div 
+        <motion.div
           className="stat-card"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-            <div style={{ 
-              width: 40, height: 40, 
-              borderRadius: 'var(--radius-md)',
-              background: 'rgba(206, 237, 123, 0.2)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center'
-            }}>
-              <Icon path={mdiAccountGroup} size={1} color="var(--accent-color)" />
-            </div>
+            <span style={{ fontSize: '2rem' }}>👥</span>
             <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Total Players</span>
           </div>
           <div className="metric-value" style={{ fontSize: '1.75rem' }}>{stats.totalPlayers}</div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="stat-card"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-            <div style={{ 
-              width: 40, height: 40, 
-              borderRadius: 'var(--radius-md)',
-              background: 'rgba(74, 222, 128, 0.2)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center'
-            }}>
-              <Icon path={mdiCheck} size={1} color="var(--success-color)" />
-            </div>
+            <span style={{ fontSize: '2rem' }}>💪</span>
             <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Fit Players</span>
           </div>
           <div className="metric-value" style={{ fontSize: '1.75rem' }}>{stats.fitPlayers}</div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="stat-card"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-            <div style={{ 
-              width: 40, height: 40, 
-              borderRadius: 'var(--radius-md)',
-              background: 'rgba(206, 237, 123, 0.2)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center'
-            }}>
-              <Icon path={mdiCricket} size={1} color="var(--accent-color)" />
-            </div>
+            <span style={{ fontSize: '2rem' }}>🏏</span>
             <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Avg Bat Speed</span>
           </div>
           <div className="metric-value" style={{ fontSize: '1.75rem' }}>{stats.avgTeamBatSpeed}</div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="stat-card"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-            <div style={{ 
-              width: 40, height: 40, 
-              borderRadius: 'var(--radius-md)',
-              background: 'rgba(74, 222, 128, 0.2)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center'
-            }}>
-              <Icon path={mdiChartBar} size={1} color="var(--success-color)" />
-            </div>
+            <span style={{ fontSize: '2rem' }}>📊</span>
             <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Avg Consistency</span>
           </div>
           <div className="metric-value" style={{ fontSize: '1.75rem' }}>{stats.avgTeamConsistency}</div>
@@ -307,16 +279,16 @@ const TeamManagement: React.FC = () => {
         <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
           <div style={{ flex: 1, minWidth: 250 }}>
             <div style={{ position: 'relative' }}>
-              <Icon 
-                path={mdiMagnify} 
-                size={0.75} 
-                style={{ 
-                  position: 'absolute', 
-                  left: 12, 
-                  top: '50%', 
+              <Icon
+                path={mdiMagnify}
+                size={0.75}
+                style={{
+                  position: 'absolute',
+                  left: 12,
+                  top: '50%',
                   transform: 'translateY(-50%)',
                   color: 'var(--text-secondary)'
-                }} 
+                }}
               />
               <input
                 type="text"
@@ -373,10 +345,10 @@ const TeamManagement: React.FC = () => {
               onClick={() => navigate(`/team/${player.id}`)}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 }}>
-                <div style={{ 
-                  width: 60, 
-                  height: 60, 
-                  borderRadius: '50%', 
+                <div style={{
+                  width: 60,
+                  height: 60,
+                  borderRadius: '50%',
                   background: 'var(--gradient-accent)',
                   display: 'flex',
                   alignItems: 'center',
@@ -387,9 +359,9 @@ const TeamManagement: React.FC = () => {
                 }}>
                   {player.name.split(' ').map(n => n[0]).join('')}
                 </div>
-                <span 
+                <span
                   className="badge"
-                  style={{ 
+                  style={{
                     background: getInjuryColor(player.injuryStatus) + '20',
                     color: getInjuryColor(player.injuryStatus),
                     textTransform: 'capitalize'
@@ -426,18 +398,18 @@ const TeamManagement: React.FC = () => {
               </div>
 
               <div className="progress-bar" style={{ marginBottom: 16 }}>
-                <div 
-                  className="progress-fill" 
-                  style={{ 
+                <div
+                  className="progress-fill"
+                  style={{
                     width: `${getOverallRating(player)}%`,
-                    background: getOverallRating(player) >= 85 ? 'var(--success-color)' : 
-                               getOverallRating(player) >= 70 ? 'var(--accent-color)' : 'var(--warning-color)'
-                  }} 
+                    background: getOverallRating(player) >= 85 ? 'var(--success-color)' :
+                      getOverallRating(player) >= 70 ? 'var(--accent-color)' : 'var(--warning-color)'
+                  }}
                 />
               </div>
 
               <div style={{ display: 'flex', gap: 8 }}>
-                <button 
+                <button
                   className="btn-primary"
                   style={{ flex: 1 }}
                   onClick={(e) => {
@@ -448,7 +420,7 @@ const TeamManagement: React.FC = () => {
                   <Icon path={mdiChevronRight} size={0.75} style={{ marginRight: 4 }} />
                   View Profile
                 </button>
-                <button 
+                <button
                   onClick={(e) => {
                     e.stopPropagation();
                     handleRemovePlayer(player.id);
@@ -487,7 +459,7 @@ const TeamManagement: React.FC = () => {
 
       {/* Add Player Modal */}
       {showAddModal && (
-        <div 
+        <div
           style={{
             position: 'fixed',
             top: 0,
@@ -511,7 +483,7 @@ const TeamManagement: React.FC = () => {
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
               <h3>Add New Player</h3>
-              <button 
+              <button
                 onClick={() => setShowAddModal(false)}
                 style={{
                   background: 'transparent',

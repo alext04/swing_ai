@@ -10,7 +10,6 @@ import {
   mdiCog,
   mdiMenu,
   mdiClose,
-  mdiTrophy,
   mdiAccountGroup,
   mdiHeart
 } from '@mdi/js';
@@ -35,7 +34,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
   return (
     <>
       {/* Mobile Menu Button */}
-      <button 
+      <button
         className="mobile-menu-btn"
         onClick={() => onClose()}
         style={{
@@ -58,13 +57,13 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
         <Icon path={open ? mdiClose : mdiMenu} size={1} />
       </button>
 
-      <motion.aside 
+      <motion.aside
         className="sidebar"
         initial={false}
         animate={{ x: 0 }}
       >
         <div className="sidebar-logo">
-          <Icon path={mdiCricket} size={1.5} color={colors.primary} />
+          <Icon path={mdiCricket} size={1} color={colors.primaryLight} />
           <h1>SwingAI</h1>
         </div>
 
@@ -78,48 +77,14 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
                 className={`nav-item ${isActive ? 'active' : ''}`}
                 onClick={() => onClose()}
               >
-                <Icon path={item.icon} size={1} />
+                <Icon path={item.icon} size={0.75} />
                 <span>{item.label}</span>
-                {isActive && (
-                  <motion.div
-                    layoutId="activeIndicator"
-                    style={{
-                      position: 'absolute',
-                      right: 0,
-                      width: 4,
-                      height: '60%',
-                      background: 'var(--gradient-accent)',
-                      borderRadius: '4px 0 0 4px'
-                    }}
-                  />
-                )}
               </Link>
             );
           })}
         </nav>
 
-        <div style={{ 
-          marginTop: 'auto', 
-          paddingTop: 32,
-          borderTop: '1px solid var(--border-color)'
-        }}>
-          <div 
-            className="stat-card" 
-            style={{ 
-              padding: 16,
-              background: 'rgba(206, 237, 123, 0.1)',
-              border: '1px solid rgba(206, 237, 123, 0.3)'
-            }}
-          >
-            <p style={{ fontSize: '0.875rem', color: 'var(--accent-color)', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
-              <Icon path={mdiTrophy} size={0.75} />
-              Pro Tip
-            </p>
-            <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
-              Record your swing from multiple angles for comprehensive analysis.
-            </p>
-          </div>
-        </div>
+
       </motion.aside>
 
       <style>{`

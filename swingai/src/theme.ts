@@ -9,34 +9,35 @@ export const colors = {
   cardBg: theme.background.card,
   cardHover: theme.background.cardHover,
   darkNeutral: theme.background.darkNeutral,
-  
+
   // Primary
-  primary: theme.primary.main,
-  primaryLight: theme.primary.light,
-  primaryDark: theme.primary.dark,
-  
+  primary: theme.primary.neutral,
+  primaryLight: theme.primary.green,
+  primaryLighter: theme.primary.greenLight,
+  primaryDark: theme.primary.greenDark,
+
   // Accent
-  accent: theme.accent.main,
-  accentHover: theme.accent.hover,
-  accentLight: theme.accent.light,
-  gold: theme.accent.gold,
-  goldEnd: theme.accent.goldEnd,
-  
+  accent: theme.accent.darkGreen,
+  accentHover: theme.accent.cream,
+  accentLight: theme.accent.creamLight,
+  gold: theme.accent.green,
+  goldEnd: theme.accent.greenEnd,
+
   // Text
   textPrimary: theme.text.primary,
   textSecondary: theme.text.secondary,
   textMuted: theme.text.muted,
-  
+
   // Border
   border: theme.border.main,
   borderLight: theme.border.light,
-  
+
   // Semantic
   success: theme.semantic.success,
   warning: theme.semantic.warning,
   danger: theme.semantic.danger,
   info: theme.semantic.info,
-  
+
   // Chart
   chartGrid: theme.chart.grid,
   chartGridDark: theme.chart.gridDark,
@@ -47,16 +48,16 @@ export const colors = {
   chartSeries3: theme.chart.series3,
   legacyBlue: theme.chart.legacyBlue,
   legacyTeal: theme.chart.legacyTeal,
-  
+
   // Injury Status
   injuryFit: theme.injuryStatus.fit,
   injuryMinor: theme.injuryStatus.minor,
   injuryMajor: theme.injuryStatus.major,
   injuryDefault: theme.injuryStatus.default,
-  
+
   // Color Picker Options
   colorPickerOptions: theme.colorPickerOptions,
-  
+
   // Shadows
   shadowAccent: theme.shadows.accent,
   shadowLg: theme.shadows.lg,
@@ -108,9 +109,9 @@ export const generateCssVariables = (): string => {
       --shadow-md: 0 4px 20px ${colors.shadowMd};
       --shadow-sm: 0 2px 10px ${colors.shadowSm};
       --shadow-card-glow: 0 0 30px ${colors.shadowCardGlow};
-      --gradient-primary: linear-gradient(135deg, ${colors.primary} 0%, ${colors.primaryLight} 100%);
-      --gradient-accent: linear-gradient(135deg, ${colors.accent} 0%, ${colors.goldEnd} 100%);
-      --gradient-gold: linear-gradient(135deg, ${colors.gold} 0%, ${colors.goldEnd} 50%, ${colors.gold} 100%);
+      --gradient-primary: linear-gradient(135deg, ${colors.primaryLight} 0%, ${colors.primaryLighter} 100%);
+      --gradient-accent: linear-gradient(135deg, ${colors.primaryLight} 0%, ${colors.primaryLighter} 100%);
+      --gradient-gold: linear-gradient(135deg, ${colors.primaryLight} 0%, ${colors.primaryLighter} 50%, ${colors.primaryLight} 100%);
     }
   `;
 };

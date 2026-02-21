@@ -10,7 +10,6 @@ import {
   mdiArrowUpRight,
   mdiArrowDownRight,
   mdiHistory,
-  mdiVideo,
   mdiCog,
   mdiHeart,
   mdiAlertCircle,
@@ -62,10 +61,10 @@ const injuryAlerts = [
 ];
 
 const teamStats = [
-  { metric: 'Avg Bat Speed', value: '89.5', unit: 'km/h', change: '+4.2%', trend: 'up' },
-  { metric: 'Team Consistency', value: '84', unit: '/100', change: '+6%', trend: 'up' },
-  { metric: 'Practice Hours', value: '156', unit: 'hrs', change: '+12h', trend: 'up' },
-  { metric: 'Injury Rate', value: '8', unit: '%', change: '-2%', trend: 'down' },
+  { metric: 'Avg Bat Speed', value: '89.5', unit: 'km/h', change: '+4.2%', trend: 'up', icon: '🏏' },
+  { metric: 'Team Consistency', value: '84', unit: '/100', change: '+6%', trend: 'up', icon: '🎯' },
+  { metric: 'Practice Hours', value: '156', unit: 'hrs', change: '+12h', trend: 'up', icon: '⏱️' },
+  { metric: 'Injury Rate', value: '8', unit: '%', change: '-2%', trend: 'down', icon: '❤️‍🩹' },
 ];
 
 const playerProgress = [
@@ -90,7 +89,7 @@ const Dashboard: React.FC = () => {
       unit: 'km/h',
       change: '+5.2%',
       trend: 'up',
-      icon: mdiTrendingUp,
+      icon: '🏏',
       color: colors.accent
     },
     {
@@ -99,7 +98,7 @@ const Dashboard: React.FC = () => {
       unit: 'degrees',
       change: '+2°',
       trend: 'up',
-      icon: mdiCricket,
+      icon: '📐',
       color: colors.success
     },
     {
@@ -108,7 +107,7 @@ const Dashboard: React.FC = () => {
       unit: '/100',
       change: '+8%',
       trend: 'up',
-      icon: mdiAccount,
+      icon: '🎯',
       color: colors.warning
     },
     {
@@ -117,13 +116,13 @@ const Dashboard: React.FC = () => {
       unit: 'hours',
       change: '+3.2h',
       trend: 'up',
-      icon: mdiClockOutline,
+      icon: '⏱️',
       color: colors.danger
     },
   ];
 
   const getSeverityColor = (severity: string) => {
-    switch(severity) {
+    switch (severity) {
       case 'low': return colors.success;
       case 'moderate': return colors.warning;
       case 'high': return colors.danger;
@@ -132,7 +131,7 @@ const Dashboard: React.FC = () => {
   };
 
   const getStatusColor = (status: string) => {
-    switch(status) {
+    switch (status) {
       case 'recovering': return colors.success;
       case 'monitoring': return colors.warning;
       case 'rest-required': return colors.danger;
@@ -232,16 +231,12 @@ const Dashboard: React.FC = () => {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 }}>
                   <div
                     style={{
-                      width: 48,
-                      height: 48,
-                      borderRadius: 'var(--radius-md)',
-                      background: `${stat.color}20`,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center'
                     }}
                   >
-                    <Icon path={stat.icon} size={1} color={stat.color} />
+                    <div className="emoji-icon" style={{ fontSize: '2.5rem' }}>{stat.icon as string}</div>
                   </div>
                   <div
                     style={{
@@ -284,8 +279,8 @@ const Dashboard: React.FC = () => {
                   <AreaChart data={sampleData}>
                     <defs>
                       <linearGradient id="colorSpeed" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor={colors.chartSeries1} stopOpacity={0.4}/>
-                        <stop offset="95%" stopColor={colors.chartSeries1} stopOpacity={0}/>
+                        <stop offset="5%" stopColor={colors.chartSeries1} stopOpacity={0.4} />
+                        <stop offset="95%" stopColor={colors.chartSeries1} stopOpacity={0} />
                       </linearGradient>
                     </defs>
                     <CartesianGrid strokeDasharray="3 3" stroke={colors.chartGridDark} />
@@ -387,10 +382,10 @@ const Dashboard: React.FC = () => {
                       <td style={{ padding: 16, fontWeight: 500 }}>{swing.type}</td>
                       <td style={{ padding: 16, color: 'var(--text-secondary)' }}>{swing.date}</td>
                       <td style={{ padding: 16 }}>
-                        <span style={{ 
-                          fontWeight: 700, 
-                          color: swing.score >= 90 ? 'var(--success-color)' : 
-                                 swing.score >= 75 ? 'var(--accent-color)' : 'var(--warning-color)'
+                        <span style={{
+                          fontWeight: 700,
+                          color: swing.score >= 90 ? 'var(--success-color)' :
+                            swing.score >= 75 ? 'var(--accent-color)' : 'var(--warning-color)'
                         }}>
                           {swing.score}
                         </span>
@@ -401,7 +396,7 @@ const Dashboard: React.FC = () => {
                         </span>
                       </td>
                       <td style={{ padding: 16 }}>
-                        <Link 
+                        <Link
                           to={`/analysis?swingId=${swing.id}`}
                           style={{ color: 'var(--accent-color)', textDecoration: 'none', fontWeight: 500 }}
                         >
@@ -424,7 +419,7 @@ const Dashboard: React.FC = () => {
               transition={{ delay: 0.7 }}
               style={{ padding: 24, textAlign: 'center' }}
             >
-              <Icon path={mdiVideo} size={2} color="var(--accent-color)" style={{ marginBottom: 16 }} />
+              <div className="emoji-icon" style={{ fontSize: '2.5rem', marginBottom: 16, display: 'flex', justifyContent: 'center' }}>📹</div>
               <h4 style={{ marginBottom: 8 }}>Upload Video</h4>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: 16 }}>
                 Analyze your latest swing footage
@@ -441,7 +436,7 @@ const Dashboard: React.FC = () => {
               transition={{ delay: 0.8 }}
               style={{ padding: 24, textAlign: 'center' }}
             >
-              <Icon path={mdiHistory} size={2} color="var(--accent-color)" style={{ marginBottom: 16 }} />
+              <div className="emoji-icon" style={{ fontSize: '2.5rem', marginBottom: 16, display: 'flex', justifyContent: 'center' }}>🕒</div>
               <h4 style={{ marginBottom: 8 }}>View History</h4>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: 16 }}>
                 Track your improvement journey
@@ -458,7 +453,7 @@ const Dashboard: React.FC = () => {
               transition={{ delay: 0.9 }}
               style={{ padding: 24, textAlign: 'center' }}
             >
-              <Icon path={mdiCog} size={2} color="var(--accent-color)" style={{ marginBottom: 16 }} />
+              <div className="emoji-icon" style={{ fontSize: '2.5rem', marginBottom: 16, display: 'flex', justifyContent: 'center' }}>⚙️</div>
               <h4 style={{ marginBottom: 8 }}>Customize Goals</h4>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: 16 }}>
                 Set your performance targets
@@ -485,16 +480,12 @@ const Dashboard: React.FC = () => {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 }}>
                   <div
                     style={{
-                      width: 48,
-                      height: 48,
-                      borderRadius: 'var(--radius-md)',
-                      background: stat.metric.includes('Injury') ? 'rgba(248, 113, 113, 0.2)' : 'rgba(206, 237, 123, 0.2)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center'
                     }}
                   >
-                    <Icon path={stat.metric.includes('Injury') ? mdiHeart : mdiTrophy} size={1} color={stat.metric.includes('Injury') ? 'var(--danger-color)' : 'var(--accent-color)'} />
+                    <div className="emoji-icon" style={{ fontSize: '2.5rem' }}>{stat.icon as string}</div>
                   </div>
                   <div
                     style={{
@@ -529,7 +520,7 @@ const Dashboard: React.FC = () => {
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
                 <h3>
-                  <Icon path={mdiAlertCircle} size={1} style={{ marginRight: 8, verticalAlign: 'middle', color: 'var(--warning-color)' }} />
+                  <span style={{ fontSize: '1.5rem', marginRight: 8, verticalAlign: 'middle' }}>⚠️</span>
                   Injury Alerts
                 </h3>
                 <span className="badge" style={{ background: 'rgba(251, 191, 36, 0.2)', color: 'var(--warning-color)' }}>
@@ -554,9 +545,9 @@ const Dashboard: React.FC = () => {
                         <h4 style={{ marginBottom: 4 }}>{alert.player}</h4>
                         <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>{alert.type}</p>
                       </div>
-                      <span 
+                      <span
                         className="badge"
-                        style={{ 
+                        style={{
                           background: getStatusColor(alert.status) + '20',
                           color: getStatusColor(alert.status)
                         }}
@@ -568,9 +559,9 @@ const Dashboard: React.FC = () => {
                       <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
                         Reported {alert.date}
                       </span>
-                      <span 
+                      <span
                         className="badge"
-                        style={{ 
+                        style={{
                           background: getSeverityColor(alert.severity) + '20',
                           color: getSeverityColor(alert.severity)
                         }}
@@ -666,17 +657,19 @@ const Dashboard: React.FC = () => {
                         <td style={{ padding: 16 }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                             <div className="progress-bar" style={{ width: 100 }}>
-                              <div 
-                                className="progress-fill" 
-                                style={{ 
+                              <div
+                                className="progress-fill"
+                                style={{
                                   width: `${player.batSpeed}%`,
-                                  background: player.batSpeed >= 90 ? 'var(--success-color)' : 
-                                             player.batSpeed >= 85 ? 'var(--accent-color)' : 'var(--warning-color)'
-                                }} 
+                                  background: player.batSpeed >= 90 ? 'var(--success-color)' :
+                                    player.batSpeed >= 85 ? 'var(--accent-color)' : 'var(--warning-color)'
+                                }}
                               />
                             </div>
-                            <span style={{ fontWeight: 600, color: player.batSpeed >= 90 ? 'var(--success-color)' : 
-                                             player.batSpeed >= 85 ? 'var(--accent-color)' : 'var(--warning-color)' }}>
+                            <span style={{
+                              fontWeight: 600, color: player.batSpeed >= 90 ? 'var(--success-color)' :
+                                player.batSpeed >= 85 ? 'var(--accent-color)' : 'var(--warning-color)'
+                            }}>
                               {player.batSpeed}
                             </span>
                           </div>
@@ -684,17 +677,19 @@ const Dashboard: React.FC = () => {
                         <td style={{ padding: 16 }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                             <div className="progress-bar" style={{ width: 100 }}>
-                              <div 
-                                className="progress-fill" 
-                                style={{ 
+                              <div
+                                className="progress-fill"
+                                style={{
                                   width: `${player.consistency}%`,
-                                  background: player.consistency >= 90 ? 'var(--success-color)' : 
-                                             player.consistency >= 85 ? 'var(--accent-color)' : 'var(--warning-color)'
-                                }} 
+                                  background: player.consistency >= 90 ? 'var(--success-color)' :
+                                    player.consistency >= 85 ? 'var(--accent-color)' : 'var(--warning-color)'
+                                }}
                               />
                             </div>
-                            <span style={{ fontWeight: 600, color: player.consistency >= 90 ? 'var(--success-color)' : 
-                                             player.consistency >= 85 ? 'var(--accent-color)' : 'var(--warning-color)' }}>
+                            <span style={{
+                              fontWeight: 600, color: player.consistency >= 90 ? 'var(--success-color)' :
+                                player.consistency >= 85 ? 'var(--accent-color)' : 'var(--warning-color)'
+                            }}>
                               {player.consistency}
                             </span>
                           </div>
@@ -702,30 +697,32 @@ const Dashboard: React.FC = () => {
                         <td style={{ padding: 16 }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                             <div className="progress-bar" style={{ width: 100 }}>
-                              <div 
-                                className="progress-fill" 
-                                style={{ 
+                              <div
+                                className="progress-fill"
+                                style={{
                                   width: `${player.form}%`,
-                                  background: player.form >= 90 ? 'var(--success-color)' : 
-                                             player.form >= 85 ? 'var(--accent-color)' : 'var(--warning-color)'
-                                }} 
+                                  background: player.form >= 90 ? 'var(--success-color)' :
+                                    player.form >= 85 ? 'var(--accent-color)' : 'var(--warning-color)'
+                                }}
                               />
                             </div>
-                            <span style={{ fontWeight: 600, color: player.form >= 90 ? 'var(--success-color)' : 
-                                             player.form >= 85 ? 'var(--accent-color)' : 'var(--warning-color)' }}>
+                            <span style={{
+                              fontWeight: 600, color: player.form >= 90 ? 'var(--success-color)' :
+                                player.form >= 85 ? 'var(--accent-color)' : 'var(--warning-color)'
+                            }}>
                               {player.form}
                             </span>
                           </div>
                         </td>
                         <td style={{ padding: 16 }}>
-                          <span 
+                          <span
                             className="badge"
-                            style={{ 
-                              background: overallRating >= 90 ? 'rgba(74, 222, 128, 0.2)' : 
-                                         overallRating >= 85 ? 'rgba(206, 237, 123, 0.2)' : 
-                                         'rgba(251, 191, 36, 0.2)',
-                              color: overallRating >= 90 ? 'var(--success-color)' : 
-                                     overallRating >= 85 ? 'var(--accent-color)' : 'var(--warning-color)',
+                            style={{
+                              background: overallRating >= 90 ? 'rgba(74, 222, 128, 0.2)' :
+                                overallRating >= 85 ? 'rgba(206, 237, 123, 0.2)' :
+                                  'rgba(251, 191, 36, 0.2)',
+                              color: overallRating >= 90 ? 'var(--success-color)' :
+                                overallRating >= 85 ? 'var(--accent-color)' : 'var(--warning-color)',
                               padding: '8px 16px',
                               fontSize: '0.875rem',
                               fontWeight: 700
@@ -751,7 +748,7 @@ const Dashboard: React.FC = () => {
               transition={{ delay: 0.7 }}
               style={{ padding: 24, textAlign: 'center' }}
             >
-              <Icon path={mdiVideo} size={2} color="var(--accent-color)" style={{ marginBottom: 16 }} />
+              <div className="emoji-icon" style={{ fontSize: '2.5rem', marginBottom: 16, display: 'flex', justifyContent: 'center' }}>📹</div>
               <h4 style={{ marginBottom: 8 }}>Team Analysis</h4>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: 16 }}>
                 Analyze all player swings
@@ -768,7 +765,7 @@ const Dashboard: React.FC = () => {
               transition={{ delay: 0.8 }}
               style={{ padding: 24, textAlign: 'center' }}
             >
-              <Icon path={mdiChartBar} size={2} color="var(--accent-color)" style={{ marginBottom: 16 }} />
+              <div className="emoji-icon" style={{ fontSize: '2.5rem', marginBottom: 16, display: 'flex', justifyContent: 'center' }}>📊</div>
               <h4 style={{ marginBottom: 8 }}>Performance Reports</h4>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: 16 }}>
                 Generate detailed reports
@@ -785,7 +782,7 @@ const Dashboard: React.FC = () => {
               transition={{ delay: 0.9 }}
               style={{ padding: 24, textAlign: 'center' }}
             >
-              <Icon path={mdiAccountGroup} size={2} color="var(--accent-color)" style={{ marginBottom: 16 }} />
+              <div className="emoji-icon" style={{ fontSize: '2.5rem', marginBottom: 16, display: 'flex', justifyContent: 'center' }}>👥</div>
               <h4 style={{ marginBottom: 8 }}>Manage Players</h4>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: 16 }}>
                 Add or remove team members
@@ -909,7 +906,7 @@ const Dashboard: React.FC = () => {
                                 <span style={{
                                   fontWeight: 700,
                                   color: overallRating >= 85 ? 'var(--success-color)' :
-                                         overallRating >= 75 ? 'var(--accent-color)' : 'var(--warning-color)'
+                                    overallRating >= 75 ? 'var(--accent-color)' : 'var(--warning-color)'
                                 }}>
                                   {overallRating}/100
                                 </span>

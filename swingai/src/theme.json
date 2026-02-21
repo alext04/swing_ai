@@ -1,67 +1,70 @@
 {
   "background": {
-    "dark": "#0D1d3f",
-    "card": "#113Eic",
-    "cardHover": "#Ceed7b",
-    "darkNeutral": "#0D1d3f"
+    "dark": "#050505",
+    "card": "rgba(28, 28, 30, 0.4)",
+    "cardHover": "rgba(255, 255, 255, 0.08)",
+    "darkNeutral": "#121212"
   },
   "primary": {
-    "main": "#113E1c",
-    "light": "#1a5226",
-    "dark": "#0d2f15"
+    "neutral": "#2C2C2E",
+    "green": "#48A111",
+    "greenLight": "#58B81E",
+    "greenDark": "#25671E"
   },
   "accent": {
-    "main": "#ceed7b",
-    "hover": "#c4e56b",
-    "light": "#e8f5c9",
-    "gold": "#f9e076",
-    "goldEnd": "#a3c94a"
+    "darkGreen": "#25671E",
+    "cream": "#f0e7c2",
+    "creamLight": "#F0E7C2",
+    "green": "#48A111",
+    "greenEnd": "#48A111"
   },
   "text": {
-    "primary": "#000000",
-    "secondary": "0D1D3E",
-    "muted": "#000000"
+    "primary": "#48A111",
+    "secondary": "#D1D1D6",
+    "muted": "#25671E"
   },
   "border": {
-    "main": "#1f5229",
-    "light": "#333333"
+    "main": "rgba(255, 255, 255, 0.1)",
+    "light": "rgba(255, 255, 255, 0.2)"
   },
   "semantic": {
-    "success": "#4ade80",
-    "warning": "#fbbf24",
-    "danger": "#f87171",
-    "info": "#60a5fa"
+    "success": "#48A111",
+    "warning": "#F2B50B",
+    "danger": "#954130",
+    "info": "#687451"
   },
   "chart": {
-    "grid": "#333333",
-    "gridDark": "#1f5229",
-    "axis": "#666666",
-    "axisLight": "#a7f3a7",
-    "series1": "#ceed7b",
-    "series2": "#4ade80",
-    "series3": "#fbbf24",
-    "legacyBlue": "#1a73e8",
-    "legacyTeal": "#00bfa5"
+    "grid": "#636366",
+    "gridDark": "#636366",
+    "axis": "#8E8E93",
+    "axisLight": "#F7F0F0",
+    "series1": "#687451",
+    "series2": "#F0E7C2",
+    "series3": "#954130",
+    "legacyBlue": "#687451",
+    "legacyTeal": "#F0E7C2"
   },
   "injuryStatus": {
-    "fit": "#4ade80",
-    "minor": "#fbbf24",
-    "major": "#f87171",
-    "default": "#a7f3a7"
+    "fit": "#48A111",
+    "minor": "#F2B50B",
+    "major": "#954130",
+    "default": "#687451"
+  },
+  "shadows": {
+    "accent": "#0A0D07",
+    "lg": "#0A0D07",
+    "md": "#0A0D07",
+    "sm": "#0A0D07",
+    "cardGlow": "#0A0D07"
   },
   "colorPickerOptions": [
-    "#1a73e8",
-    "#00bfa5",
-    "#ff6b35",
-    "#00c853",
-    "#f44336",
-    "#9c27b0"
-  ],
-  "shadows": {
-    "accent": "rgba(206, 237, 123, 0.3)",
-    "lg": "rgba(17, 62, 28, 0.6)",
-    "md": "rgba(17, 62, 28, 0.4)",
-    "sm": "rgba(17, 62, 28, 0.3)",
-    "cardGlow": "rgba(206, 237, 123, 0.15)"
-  }
+    "#48A111",
+    "#25671E",
+    "#F2B50B",
+    "#954130",
+    "#687451",
+    "#60A5FA",
+    "#2DD4BF",
+    "#F0E7C2"
+  ]
 }

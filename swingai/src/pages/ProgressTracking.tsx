@@ -95,21 +95,14 @@ const ProgressTracking: React.FC = () => {
 
       {/* Quick Stats */}
       <div className="grid-4" style={{ marginBottom: 32 }}>
-        <motion.div 
+        <motion.div
           className="stat-card"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-            <div style={{ 
-              width: 40, height: 40, 
-              borderRadius: 'var(--radius-md)',
-              background: 'rgba(26, 115, 232, 0.2)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center'
-            }}>
-              <Icon path={mdiCricket} size={1} color="var(--primary-color)" />
-            </div>
+            <span style={{ fontSize: '2rem' }}>🏏</span>
             <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Total Swings</span>
           </div>
           <div className="metric-value" style={{ fontSize: '1.75rem' }}>{stats.totalSwings}</div>
@@ -125,14 +118,7 @@ const ProgressTracking: React.FC = () => {
           transition={{ delay: 0.2 }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-            <div style={{
-              width: 40, height: 40,
-              borderRadius: 'var(--radius-md)',
-              background: 'rgba(0, 191, 165, 0.2)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center'
-            }}>
-              <Icon path={mdiTrophy} size={1} color="var(--secondary-color)" />
-            </div>
+            <span style={{ fontSize: '2rem' }}>🏆</span>
             <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Average Score</span>
           </div>
           <div className="metric-value" style={{ fontSize: '1.75rem' }}>{stats.avgScore}</div>
@@ -141,21 +127,14 @@ const ProgressTracking: React.FC = () => {
           </div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="stat-card"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-            <div style={{ 
-              width: 40, height: 40, 
-              borderRadius: 'var(--radius-md)',
-              background: 'rgba(255, 107, 53, 0.2)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center'
-            }}>
-              <Icon path={mdiCalendar} size={1} color="var(--accent-color)" />
-            </div>
+            <span style={{ fontSize: '2rem' }}>📅</span>
             <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Practice Time</span>
           </div>
           <div className="metric-value" style={{ fontSize: '1.75rem' }}>{stats.practiceHours}h</div>
@@ -164,21 +143,14 @@ const ProgressTracking: React.FC = () => {
           </div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="stat-card"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-            <div style={{ 
-              width: 40, height: 40, 
-              borderRadius: 'var(--radius-md)',
-              background: 'rgba(0, 200, 83, 0.2)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center'
-            }}>
-              <Icon path={mdiTrendingUp} size={1} color="var(--success-color)" />
-            </div>
+            <span style={{ fontSize: '2rem' }}>📈</span>
             <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Current Streak</span>
           </div>
           <div className="metric-value" style={{ fontSize: '1.75rem' }}>{stats.streak} days</div>
@@ -261,8 +233,8 @@ const ProgressTracking: React.FC = () => {
               <ComposedChart data={monthlyData}>
                 <defs>
                   <linearGradient id="colorBatSpeed" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor={colors.legacyBlue} stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor={colors.legacyBlue} stopOpacity={0}/>
+                    <stop offset="5%" stopColor={colors.legacyBlue} stopOpacity={0.3} />
+                    <stop offset="95%" stopColor={colors.legacyBlue} stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke={colors.chartGrid} />
@@ -358,23 +330,23 @@ const ProgressTracking: React.FC = () => {
                   <td style={{ padding: 16, fontWeight: 500 }}>{shot.name}</td>
                   <td style={{ padding: 16, color: 'var(--text-secondary)' }}>{shot.count}</td>
                   <td style={{ padding: 16 }}>
-                    <span style={{ 
-                      fontWeight: 700, 
-                      color: shot.avgScore >= 85 ? 'var(--success-color)' : 
-                             shot.avgScore >= 75 ? 'var(--primary-color)' : 'var(--warning-color)'
+                    <span style={{
+                      fontWeight: 700,
+                      color: shot.avgScore >= 85 ? 'var(--success-color)' :
+                        shot.avgScore >= 75 ? 'var(--primary-color)' : 'var(--warning-color)'
                     }}>
                       {shot.avgScore}
                     </span>
                   </td>
                   <td style={{ padding: 16 }}>
                     <div className="progress-bar" style={{ width: 150 }}>
-                      <div 
-                        className="progress-fill" 
-                        style={{ 
+                      <div
+                        className="progress-fill"
+                        style={{
                           width: `${shot.avgScore}%`,
-                          background: shot.avgScore >= 85 ? 'var(--success-color)' : 
-                                     shot.avgScore >= 75 ? 'var(--primary-color)' : 'var(--warning-color)'
-                        }} 
+                          background: shot.avgScore >= 85 ? 'var(--success-color)' :
+                            shot.avgScore >= 75 ? 'var(--primary-color)' : 'var(--warning-color)'
+                        }}
                       />
                     </div>
                   </td>
@@ -403,16 +375,13 @@ const ProgressTracking: React.FC = () => {
               <div
                 key={achievement.id}
                 style={{
-                  padding: 16,
-                  background: achievement.unlocked ? 'rgba(0, 200, 83, 0.1)' : 'var(--card-bg)',
-                  border: `1px solid ${achievement.unlocked ? 'var(--success-color)' : 'var(--border-color)'}`,
-                  borderRadius: 'var(--radius-md)',
+                  padding: '8px 0',
                   opacity: achievement.unlocked ? 1 : 0.6
                 }}
               >
-                <div style={{ fontSize: '2rem', marginBottom: 8 }}>{achievement.icon}</div>
-                <h4 style={{ fontSize: '0.875rem', marginBottom: 4 }}>{achievement.title}</h4>
-                <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginBottom: 8 }}>
+                <div className="emoji-icon" style={{ fontSize: '2.5rem', marginBottom: 16 }}>{achievement.icon}</div>
+                <h4 style={{ fontSize: '1rem', marginBottom: 6, color: achievement.unlocked ? 'var(--success-color)' : 'var(--text-primary)' }}>{achievement.title}</h4>
+                <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginBottom: 12 }}>
                   {achievement.description}
                 </p>
                 {!achievement.unlocked && achievement.progress !== undefined && (
@@ -456,9 +425,9 @@ const ProgressTracking: React.FC = () => {
               width: 2,
               background: 'var(--border-color)'
             }} />
-            
+
             {milestones.map((milestone, index) => (
-              <div key={milestone.id} style={{ 
+              <div key={milestone.id} style={{
                 position: 'relative',
                 marginBottom: 24,
                 paddingBottom: index < milestones.length - 1 ? 0 : 0
@@ -474,7 +443,7 @@ const ProgressTracking: React.FC = () => {
                   background: 'var(--gradient-primary)',
                   border: '3px solid var(--card-bg)'
                 }} />
-                
+
                 <div style={{ marginLeft: 16 }}>
                   <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
                     {milestone.date}
@@ -504,7 +473,7 @@ const ProgressTracking: React.FC = () => {
             Set New Goal
           </button>
         </div>
-        
+
         <div className="grid-3">
           <div style={{ padding: 20, background: 'var(--card-bg)', borderRadius: 'var(--radius-md)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 12 }}>

@@ -161,7 +161,7 @@ const MedicalReports: React.FC = () => {
   const [sortBy, setSortBy] = useState<string>('dateReported');
 
   const getSeverityColor = (severity: string) => {
-    switch(severity) {
+    switch (severity) {
       case 'low': return colors.success;
       case 'moderate': return colors.warning;
       case 'high': return colors.danger;
@@ -171,7 +171,7 @@ const MedicalReports: React.FC = () => {
   };
 
   const getStatusColor = (status: string) => {
-    switch(status) {
+    switch (status) {
       case 'recovering': return colors.success;
       case 'monitoring': return colors.warning;
       case 'rest-required': return colors.danger;
@@ -182,7 +182,7 @@ const MedicalReports: React.FC = () => {
   };
 
   const getStatusIcon = (status: string) => {
-    switch(status) {
+    switch (status) {
       case 'recovering': return mdiCheckCircle;
       case 'monitoring': return mdiInformation;
       case 'rest-required': return mdiAlertCircle;
@@ -195,7 +195,7 @@ const MedicalReports: React.FC = () => {
   const filteredReports = medicalReportsData
     .filter(report => {
       const matchesSearch = report.player.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           report.injuryType.toLowerCase().includes(searchTerm.toLowerCase());
+        report.injuryType.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesSeverity = filterSeverity === 'all' || report.severity === filterSeverity;
       const matchesStatus = filterStatus === 'all' || report.status === filterStatus;
       return matchesSearch && matchesSeverity && matchesStatus;
@@ -224,7 +224,7 @@ const MedicalReports: React.FC = () => {
   return (
     <div className="fade-in">
       {/* Back Button */}
-      <button 
+      <button
         onClick={() => navigate(-1)}
         style={{
           display: 'flex',
@@ -254,81 +254,53 @@ const MedicalReports: React.FC = () => {
 
       {/* Summary Stats */}
       <div className="grid-4" style={{ marginBottom: 32 }}>
-        <motion.div 
+        <motion.div
           className="stat-card"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-            <div style={{ 
-              width: 40, height: 40, 
-              borderRadius: 'var(--radius-md)',
-              background: 'rgba(206, 237, 123, 0.2)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center'
-            }}>
-              <Icon path={mdiHeart} size={1} color={colors.accent} />
-            </div>
+            <span style={{ fontSize: '2rem' }}>🩺</span>
             <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Total Reports</span>
           </div>
           <div className="metric-value" style={{ fontSize: '1.75rem' }}>{stats.total}</div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="stat-card"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-            <div style={{ 
-              width: 40, height: 40, 
-              borderRadius: 'var(--radius-md)',
-              background: 'rgba(251, 191, 36, 0.2)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center'
-            }}>
-              <Icon path={mdiAlertCircle} size={1} color={colors.warning} />
-            </div>
+            <span style={{ fontSize: '2rem' }}>⚠️</span>
             <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Active Injuries</span>
           </div>
           <div className="metric-value" style={{ fontSize: '1.75rem', color: colors.warning }}>{stats.active}</div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="stat-card"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-            <div style={{ 
-              width: 40, height: 40, 
-              borderRadius: 'var(--radius-md)',
-              background: 'rgba(74, 222, 128, 0.2)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center'
-            }}>
-              <Icon path={mdiCheckCircle} size={1} color={colors.success} />
-            </div>
+            <span style={{ fontSize: '2rem' }}>🔄</span>
             <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Recovering</span>
           </div>
           <div className="metric-value" style={{ fontSize: '1.75rem', color: colors.success }}>{stats.recovering}</div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="stat-card"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-            <div style={{ 
-              width: 40, height: 40, 
-              borderRadius: 'var(--radius-md)',
-              background: 'rgba(74, 222, 128, 0.2)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center'
-            }}>
-              <Icon path={mdiCheckCircle} size={1} color={colors.success} />
-            </div>
+            <span style={{ fontSize: '2rem' }}>✅</span>
             <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Cleared</span>
           </div>
           <div className="metric-value" style={{ fontSize: '1.75rem', color: colors.success }}>{stats.cleared}</div>
@@ -340,16 +312,16 @@ const MedicalReports: React.FC = () => {
         <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
           <div style={{ flex: 1, minWidth: 250 }}>
             <div style={{ position: 'relative' }}>
-              <Icon 
-                path={mdiMagnify} 
-                size={0.75} 
-                style={{ 
-                  position: 'absolute', 
-                  left: 12, 
-                  top: '50%', 
+              <Icon
+                path={mdiMagnify}
+                size={0.75}
+                style={{
+                  position: 'absolute',
+                  left: 12,
+                  top: '50%',
                   transform: 'translateY(-50%)',
                   color: 'var(--text-secondary)'
-                }} 
+                }}
               />
               <input
                 type="text"
@@ -368,7 +340,7 @@ const MedicalReports: React.FC = () => {
               />
             </div>
           </div>
-          
+
           <div style={{ display: 'flex', gap: 8 }}>
             <select
               value={filterSeverity}
@@ -431,14 +403,14 @@ const MedicalReports: React.FC = () => {
           </div>
 
           <div style={{ display: 'flex', gap: 8 }}>
-            <button 
+            <button
               className="btn-primary"
               style={{ padding: '10px 16px' }}
               onClick={() => window.print()}
             >
               <Icon path={mdiPrinter} size={0.75} />
             </button>
-            <button 
+            <button
               className="btn-primary"
               style={{ padding: '10px 16px' }}
               onClick={() => alert('Report exported as PDF!')}
@@ -489,9 +461,9 @@ const MedicalReports: React.FC = () => {
                     <tr style={{ borderBottom: '1px solid var(--border-color)' }}>
                       <td style={{ padding: 16, fontWeight: 600 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                          <div style={{ 
-                            width: 32, height: 32, 
-                            borderRadius: '50%', 
+                          <div style={{
+                            width: 32, height: 32,
+                            borderRadius: '50%',
                             background: 'var(--gradient-accent)',
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
                             fontSize: '0.75rem', fontWeight: 700, color: 'var(--primary-color)'
@@ -506,9 +478,9 @@ const MedicalReports: React.FC = () => {
                         <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>{report.bodyPart}</div>
                       </td>
                       <td style={{ padding: 16 }}>
-                        <span 
+                        <span
                           className="badge"
-                          style={{ 
+                          style={{
                             background: getSeverityColor(report.severity) + '20',
                             color: getSeverityColor(report.severity),
                             textTransform: 'capitalize'
@@ -518,9 +490,9 @@ const MedicalReports: React.FC = () => {
                         </span>
                       </td>
                       <td style={{ padding: 16 }}>
-                        <span 
+                        <span
                           className="badge"
-                          style={{ 
+                          style={{
                             background: getStatusColor(report.status) + '20',
                             color: getStatusColor(report.status),
                             textTransform: 'capitalize',
@@ -534,8 +506,8 @@ const MedicalReports: React.FC = () => {
                         </span>
                       </td>
                       <td style={{ padding: 16, color: 'var(--text-secondary)' }}>
-                        {new Date(report.dateReported).toLocaleDateString('en-IN', { 
-                          year: 'numeric', month: 'short', day: 'numeric' 
+                        {new Date(report.dateReported).toLocaleDateString('en-IN', {
+                          year: 'numeric', month: 'short', day: 'numeric'
                         })}
                       </td>
                       <td style={{ padding: 16 }}>
@@ -543,20 +515,20 @@ const MedicalReports: React.FC = () => {
                       </td>
                       <td style={{ padding: 16 }}>
                         <div style={{ fontWeight: 600, color: new Date(report.expectedReturn) < new Date() ? colors.warning : colors.success }}>
-                          {new Date(report.expectedReturn).toLocaleDateString('en-IN', { 
-                            month: 'short', day: 'numeric' 
+                          {new Date(report.expectedReturn).toLocaleDateString('en-IN', {
+                            month: 'short', day: 'numeric'
                           })}
                         </div>
                       </td>
                       <td style={{ padding: 16 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                           <div className="progress-bar" style={{ width: 100 }}>
-                            <div 
-                              className="progress-fill" 
-                              style={{ 
+                            <div
+                              className="progress-fill"
+                              style={{
                                 width: `${getProgressPercentage(report)}%`,
                                 background: getProgressPercentage(report) === 100 ? colors.success : colors.accent
-                              }} 
+                              }}
                             />
                           </div>
                           <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
@@ -565,10 +537,10 @@ const MedicalReports: React.FC = () => {
                         </div>
                       </td>
                       <td style={{ padding: 16 }}>
-                        <button 
+                        <button
                           className="btn-primary"
                           style={{ padding: '6px 12px', fontSize: '0.75rem' }}
-                          onClick={() => {/* Could open detailed modal */}}
+                          onClick={() => {/* Could open detailed modal */ }}
                         >
                           View
                         </button>
@@ -605,13 +577,13 @@ const MedicalReports: React.FC = () => {
                               <strong>Doctor:</strong> {report.doctorAssigned}
                             </div>
                             <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginBottom: 8 }}>
-                              <strong>Last Updated:</strong> {new Date(report.lastUpdated).toLocaleDateString('en-IN', { 
-                                year: 'numeric', month: 'short', day: 'numeric' 
+                              <strong>Last Updated:</strong> {new Date(report.lastUpdated).toLocaleDateString('en-IN', {
+                                year: 'numeric', month: 'short', day: 'numeric'
                               })}
                             </div>
                             <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
-                              <strong>Next Review:</strong> {new Date(new Date(report.expectedReturn).getTime() - 7 * 24 * 60 * 60 * 1000).toLocaleDateString('en-IN', { 
-                                month: 'short', day: 'numeric' 
+                              <strong>Next Review:</strong> {new Date(new Date(report.expectedReturn).getTime() - 7 * 24 * 60 * 60 * 1000).toLocaleDateString('en-IN', {
+                                month: 'short', day: 'numeric'
                               })}
                             </div>
                           </div>

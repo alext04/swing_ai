@@ -50,7 +50,7 @@ const SwingAnalysis: React.FC = () => {
   const [duration, setDuration] = useState(0);
   const [dragOver, setDragOver] = useState(false);
   const [selectedView, setSelectedView] = useState<'original' | 'overlay' | 'skeleton'>('overlay');
-  
+
   const videoRef = useRef<HTMLVideoElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -234,21 +234,21 @@ const SwingAnalysis: React.FC = () => {
             {/* Tips Section */}
             <div className="grid-3" style={{ marginTop: 32 }}>
               <div className="card" style={{ padding: 24 }}>
-                <Icon path={mdiVideo} size={1.5} color="var(--primary-color)" style={{ marginBottom: 12 }} />
+                <div style={{ fontSize: '2.5rem', marginBottom: 12 }}>📹</div>
                 <h4 style={{ marginBottom: 8 }}>Recording Angle</h4>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.5 }}>
                   Record from the side or front for best results. Ensure the camera is at ground level.
                 </p>
               </div>
               <div className="card" style={{ padding: 24 }}>
-                <Icon path={mdiInformation} size={1.5} color="var(--secondary-color)" style={{ marginBottom: 12 }} />
+                <div style={{ fontSize: '2.5rem', marginBottom: 12 }}>💡</div>
                 <h4 style={{ marginBottom: 8 }}>Lighting</h4>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.5 }}>
                   Good lighting is crucial. Avoid shadows on your body and ensure clear visibility.
                 </p>
               </div>
               <div className="card" style={{ padding: 24 }}>
-                <Icon path={mdiCricket} size={1.5} color="var(--accent-color)" style={{ marginBottom: 12 }} />
+                <div style={{ fontSize: '2.5rem', marginBottom: 12 }}>🏏</div>
                 <h4 style={{ marginBottom: 8 }}>Full Swing</h4>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.5 }}>
                   Capture your complete swing from stance to follow-through for comprehensive analysis.
@@ -324,7 +324,7 @@ const SwingAnalysis: React.FC = () => {
                     onLoadedMetadata={handleLoadedMetadata}
                     onEnded={() => setIsPlaying(false)}
                   />
-                  
+
                   {/* Skeleton Overlay (simulated) */}
                   {selectedView === 'skeleton' && (
                     <svg
@@ -419,7 +419,7 @@ const SwingAnalysis: React.FC = () => {
                       Analyze Swing
                     </button>
                   )}
-                  <button 
+                  <button
                     onClick={resetAnalysis}
                     style={{
                       padding: '12px 24px',
@@ -466,19 +466,18 @@ const SwingAnalysis: React.FC = () => {
                     style={{ display: 'flex', flexDirection: 'column', gap: 24 }}
                   >
                     {/* Overall Score Card */}
-                    <div 
-                      className={`analysis-card ${
-                        mockAnalysisResult.overallScore >= 85 ? 'excellent' :
-                        mockAnalysisResult.overallScore >= 70 ? 'good' :
-                        mockAnalysisResult.overallScore >= 50 ? 'needs-improvement' : 'poor'
-                      }`}
+                    <div
+                      className={`analysis-card ${mockAnalysisResult.overallScore >= 85 ? 'excellent' :
+                          mockAnalysisResult.overallScore >= 70 ? 'good' :
+                            mockAnalysisResult.overallScore >= 50 ? 'needs-improvement' : 'poor'
+                        }`}
                       style={{ padding: 24, textAlign: 'center' }}
                     >
                       <h3 style={{ marginBottom: 16 }}>Overall Score</h3>
                       <div style={{ fontSize: '4rem', fontWeight: 700, color: getScoreColor(mockAnalysisResult.overallScore) }}>
                         {mockAnalysisResult.overallScore}
                       </div>
-                      <span className="badge" style={{ 
+                      <span className="badge" style={{
                         background: getScoreColor(mockAnalysisResult.overallScore),
                         color: 'white',
                         padding: '8px 16px',
@@ -517,8 +516,8 @@ const SwingAnalysis: React.FC = () => {
                       </h4>
                       <ul style={{ listStyle: 'none', padding: 0 }}>
                         {mockAnalysisResult.strengths.map((strength, index) => (
-                          <li key={index} style={{ 
-                            padding: '12px 0', 
+                          <li key={index} style={{
+                            padding: '12px 0',
                             borderBottom: index < mockAnalysisResult.strengths.length - 1 ? '1px solid var(--border-color)' : 'none',
                             display: 'flex',
                             alignItems: 'flex-start',
@@ -539,8 +538,8 @@ const SwingAnalysis: React.FC = () => {
                       </h4>
                       <ul style={{ listStyle: 'none', padding: 0 }}>
                         {mockAnalysisResult.improvements.map((improvement, index) => (
-                          <li key={index} style={{ 
-                            padding: '12px 0', 
+                          <li key={index} style={{
+                            padding: '12px 0',
                             borderBottom: index < mockAnalysisResult.improvements.length - 1 ? '1px solid var(--border-color)' : 'none',
                             display: 'flex',
                             alignItems: 'flex-start',
@@ -559,8 +558,8 @@ const SwingAnalysis: React.FC = () => {
                         <Icon path={mdiDownload} size={0.75} style={{ marginRight: 8 }} />
                         Export Report
                       </button>
-                      <button 
-                        className="btn-accent" 
+                      <button
+                        className="btn-accent"
                         style={{ flex: 1 }}
                       >
                         <Icon path={mdiShare} size={0.75} style={{ marginRight: 8 }} />
@@ -592,10 +591,10 @@ const SwingAnalysis: React.FC = () => {
                 <div className="grid-4">
                   {Object.entries(mockAnalysisResult.metrics).map(([key, value]) => (
                     <div key={key} style={{ textAlign: 'center' }}>
-                      <div style={{ 
-                        width: 80, 
-                        height: 80, 
-                        borderRadius: '50%', 
+                      <div style={{
+                        width: 80,
+                        height: 80,
+                        borderRadius: '50%',
                         background: `conic-gradient(${getScoreColor(value)} ${value}%, var(--border-color) ${value}%)`,
                         margin: '0 auto 12px',
                         display: 'flex',
