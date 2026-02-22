@@ -16,7 +16,6 @@ interface Player {
   id: number;
   name: string;
   role: string;
-  battingStyle: string;
   age: number;
   matchesPlayed: number;
   avgScore: number;
@@ -27,6 +26,15 @@ interface Player {
   joinDate: string;
   email: string;
   phone: string;
+  // Batting stats (for batsmen and all-rounders)
+  battingStyle?: 'right-handed' | 'left-handed';
+  // Bowling stats (for bowlers and all-rounders)
+  bowlingStyle?: 'fast' | 'medium' | 'spin';
+  bowlingArm?: 'right-arm' | 'left-arm';
+  avgBowlSpeed?: number;
+  bowlingAccuracy?: number;
+  economyRate?: number;
+  wickets?: number;
 }
 
 const initialPlayers: Player[] = [
@@ -34,7 +42,7 @@ const initialPlayers: Player[] = [
     id: 1,
     name: 'Rohit Sharma',
     role: 'Opening Batsman',
-    battingStyle: 'Right-handed',
+    battingStyle: 'right-handed',
     age: 36,
     matchesPlayed: 24,
     avgScore: 88,
@@ -50,7 +58,7 @@ const initialPlayers: Player[] = [
     id: 2,
     name: 'Virat Kohli',
     role: 'Top Order Batsman',
-    battingStyle: 'Right-handed',
+    battingStyle: 'right-handed',
     age: 35,
     matchesPlayed: 28,
     avgScore: 92,
@@ -66,7 +74,7 @@ const initialPlayers: Player[] = [
     id: 3,
     name: 'KL Rahul',
     role: 'Wicket-keeper Batsman',
-    battingStyle: 'Right-handed',
+    battingStyle: 'right-handed',
     age: 31,
     matchesPlayed: 20,
     avgScore: 82,
@@ -82,7 +90,7 @@ const initialPlayers: Player[] = [
     id: 4,
     name: 'Shreyas Iyer',
     role: 'Middle Order Batsman',
-    battingStyle: 'Right-handed',
+    battingStyle: 'right-handed',
     age: 29,
     matchesPlayed: 18,
     avgScore: 84,
@@ -98,13 +106,19 @@ const initialPlayers: Player[] = [
     id: 5,
     name: 'Hardik Pandya',
     role: 'All-rounder',
-    battingStyle: 'Right-handed',
+    battingStyle: 'right-handed',
+    bowlingStyle: 'fast',
+    bowlingArm: 'right-arm',
     age: 30,
     matchesPlayed: 22,
     avgScore: 86,
     batSpeed: 94,
     consistency: 80,
     form: 87,
+    avgBowlSpeed: 88,
+    bowlingAccuracy: 82,
+    economyRate: 6.8,
+    wickets: 45,
     injuryStatus: 'fit',
     joinDate: '2024-01-25',
     email: 'hardik.pandya@team.com',
@@ -114,7 +128,7 @@ const initialPlayers: Player[] = [
     id: 6,
     name: 'Rishabh Pant',
     role: 'Wicket-keeper Batsman',
-    battingStyle: 'Left-handed',
+    battingStyle: 'left-handed',
     age: 26,
     matchesPlayed: 19,
     avgScore: 87,
@@ -125,6 +139,70 @@ const initialPlayers: Player[] = [
     joinDate: '2024-02-05',
     email: 'rishabh.pant@team.com',
     phone: '+91 98765 43215'
+  },
+  {
+    id: 7,
+    name: 'Jasprit Bumrah',
+    role: 'Bowler',
+    bowlingStyle: 'fast',
+    bowlingArm: 'right-arm',
+    age: 30,
+    matchesPlayed: 26,
+    avgScore: 0,
+    batSpeed: 0,
+    consistency: 0,
+    form: 92,
+    avgBowlSpeed: 95,
+    bowlingAccuracy: 88,
+    economyRate: 5.8,
+    wickets: 78,
+    injuryStatus: 'fit',
+    joinDate: '2024-01-05',
+    email: 'jasprit.bumrah@team.com',
+    phone: '+91 98765 43216'
+  },
+  {
+    id: 8,
+    name: 'Mohammed Siraj',
+    role: 'Bowler',
+    bowlingStyle: 'fast',
+    bowlingArm: 'right-arm',
+    age: 30,
+    matchesPlayed: 24,
+    avgScore: 0,
+    batSpeed: 0,
+    consistency: 0,
+    form: 85,
+    avgBowlSpeed: 90,
+    bowlingAccuracy: 85,
+    economyRate: 6.2,
+    wickets: 65,
+    injuryStatus: 'fit',
+    joinDate: '2024-01-08',
+    email: 'mohammed.siraj@team.com',
+    phone: '+91 98765 43217'
+  },
+  {
+    id: 9,
+    name: 'Ravindra Jadeja',
+    role: 'All-rounder',
+    battingStyle: 'left-handed',
+    bowlingStyle: 'spin',
+    bowlingArm: 'left-arm',
+    age: 35,
+    matchesPlayed: 30,
+    avgScore: 78,
+    batSpeed: 82,
+    consistency: 85,
+    form: 88,
+    avgBowlSpeed: 72,
+    bowlingAccuracy: 90,
+    economyRate: 4.8,
+    wickets: 92,
+    injuryStatus: 'fit',
+    joinDate: '2024-01-02',
+    email: 'ravindra.jadeja@team.com',
+    phone: '+91 98765 43218'
   },
 ];
 
@@ -138,7 +216,7 @@ const TeamManagement: React.FC = () => {
   const [newPlayer, setNewPlayer] = useState<Partial<Player>>({
     name: '',
     role: 'Batsman',
-    battingStyle: 'Right-handed',
+    battingStyle: 'right-handed',
     age: 25,
     email: '',
     phone: ''
@@ -155,7 +233,7 @@ const TeamManagement: React.FC = () => {
       id: Math.max(...players.map(p => p.id)) + 1,
       name: newPlayer.name || 'New Player',
       role: newPlayer.role || 'Batsman',
-      battingStyle: newPlayer.battingStyle || 'Right-handed',
+      battingStyle: newPlayer.battingStyle || 'right-handed',
       age: newPlayer.age || 25,
       matchesPlayed: 0,
       avgScore: 0,
@@ -169,7 +247,7 @@ const TeamManagement: React.FC = () => {
     };
     setPlayers([...players, player]);
     setShowAddModal(false);
-    setNewPlayer({ name: '', role: 'Batsman', battingStyle: 'Right-handed', age: 25, email: '', phone: '' });
+    setNewPlayer({ name: '', role: 'Batsman', battingStyle: 'right-handed', age: 25, email: '', phone: '' });
   };
 
   const handleRemovePlayer = (id: number) => {
@@ -544,8 +622,8 @@ const TeamManagement: React.FC = () => {
                 <div>
                   <label style={{ display: 'block', marginBottom: 8, fontWeight: 500 }}>Batting Style</label>
                   <select
-                    value={newPlayer.battingStyle}
-                    onChange={(e) => setNewPlayer({ ...newPlayer, battingStyle: e.target.value })}
+                    value={newPlayer.battingStyle || 'right-handed'}
+                    onChange={(e) => setNewPlayer({ ...newPlayer, battingStyle: e.target.value as 'right-handed' | 'left-handed' })}
                     style={{
                       width: '100%',
                       padding: 12,

@@ -4,7 +4,9 @@ import { Container } from 'react-bootstrap';
 import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
 import SwingAnalysis from './pages/SwingAnalysis';
+import BowlingAnalysis from './pages/BowlingAnalysis';
 import ProgressTracking from './pages/ProgressTracking';
+import BowlingProgress from './pages/BowlingProgress';
 import Settings from './pages/Settings';
 import TeamManagement from './pages/TeamManagement';
 import PlayerProfile from './pages/PlayerProfile';
@@ -39,7 +41,9 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/analysis" element={<SwingAnalysis />} />
+              <Route path="/bowling-analysis" element={<BowlingAnalysis />} />
               <Route path="/progress" element={<ProgressTracking />} />
+              <Route path="/bowling-progress" element={<BowlingProgress />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/team" element={<TeamManagement />} />
               <Route path="/team/:id" element={<PlayerProfile />} />

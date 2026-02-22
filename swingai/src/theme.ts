@@ -46,8 +46,17 @@ export const colors = {
   chartSeries1: theme.chart.series1,
   chartSeries2: theme.chart.series2,
   chartSeries3: theme.chart.series3,
+  bowling1: theme.chart.bowling1,
+  bowling2: theme.chart.bowling2,
+  bowling3: theme.chart.bowling3,
   legacyBlue: theme.chart.legacyBlue,
   legacyTeal: theme.chart.legacyTeal,
+
+  // Bowling
+  bowling: theme.bowling.main,
+  bowlingLight: theme.bowling.light,
+  bowlingDark: theme.bowling.dark,
+  bowlingAccent: theme.bowling.accent,
 
   // Injury Status
   injuryFit: theme.injuryStatus.fit,
@@ -60,6 +69,7 @@ export const colors = {
 
   // Shadows
   shadowAccent: theme.shadows.accent,
+  shadowBowling: theme.shadows.bowling,
   shadowLg: theme.shadows.lg,
   shadowMd: theme.shadows.md,
   shadowSm: theme.shadows.sm,
@@ -98,13 +108,21 @@ export const generateCssVariables = (): string => {
       --chart-series-1: ${colors.chartSeries1};
       --chart-series-2: ${colors.chartSeries2};
       --chart-series-3: ${colors.chartSeries3};
+      --bowling-1: ${colors.bowling1};
+      --bowling-2: ${colors.bowling2};
+      --bowling-3: ${colors.bowling3};
       --legacy-blue: ${colors.legacyBlue};
       --legacy-teal: ${colors.legacyTeal};
+      --bowling: ${colors.bowling};
+      --bowling-light: ${colors.bowlingLight};
+      --bowling-dark: ${colors.bowlingDark};
+      --bowling-accent: ${colors.bowlingAccent};
       --injury-fit: ${colors.injuryFit};
       --injury-minor: ${colors.injuryMinor};
       --injury-major: ${colors.injuryMajor};
       --injury-default: ${colors.injuryDefault};
       --shadow-accent: 0 8px 25px ${colors.shadowAccent};
+      --shadow-bowling: 0 8px 25px ${colors.shadowBowling};
       --shadow-lg: 0 10px 40px ${colors.shadowLg};
       --shadow-md: 0 4px 20px ${colors.shadowMd};
       --shadow-sm: 0 2px 10px ${colors.shadowSm};

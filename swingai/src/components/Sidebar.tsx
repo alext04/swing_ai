@@ -11,7 +11,9 @@ import {
   mdiMenu,
   mdiClose,
   mdiAccountGroup,
-  mdiHeart
+  mdiHeart,
+  mdiSpeedometer,
+  mdiTrophy
 } from '@mdi/js';
 
 interface SidebarProps {
@@ -25,8 +27,10 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onToggle, onClose }) => {
 
   const navItems = [
     { path: '/', icon: mdiViewDashboard, label: 'Dashboard' },
-    { path: '/analysis', icon: mdiVideo, label: 'Swing Analysis' },
-    { path: '/progress', icon: mdiChartTimelineVariant, label: 'Progress Tracking' },
+    { path: '/analysis', icon: mdiVideo, label: 'Batting Analysis' },
+    { path: '/bowling-analysis', icon: mdiSpeedometer, label: 'Bowling Analysis' },
+    { path: '/progress', icon: mdiChartTimelineVariant, label: 'Batting Progress' },
+    { path: '/bowling-progress', icon: mdiTrophy, label: 'Bowling Progress' },
     { path: '/team', icon: mdiAccountGroup, label: 'Team Management' },
     { path: '/medical-reports', icon: mdiHeart, label: 'Medical Reports' },
     { path: '/settings', icon: mdiCog, label: 'Settings' },

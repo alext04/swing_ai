@@ -13,7 +13,10 @@ import {
   mdiChartBar,
   mdiDownload,
   mdiClose,
-  mdiPrinter
+  mdiPrinter,
+  mdiSpeedometer,
+  mdiTarget,
+  mdiTrendingUp
 } from '@mdi/js';
 import { Link, useNavigate } from 'react-router-dom';
 import {
@@ -75,9 +78,10 @@ const Dashboard: React.FC = () => {
   const navigate = useNavigate();
   const [timeRange, setTimeRange] = useState('week');
   const [activeTab, setActiveTab] = useState<'player' | 'coach'>('player');
+  const [viewMode, setViewMode] = useState<'batting' | 'bowling' | 'all'>('all');
   const [showReportModal, setShowReportModal] = useState(false);
 
-  const stats = [
+  const battingStats = [
     {
       title: 'Avg Bat Speed',
       value: '91.4',
@@ -116,6 +120,47 @@ const Dashboard: React.FC = () => {
     },
   ];
 
+  const bowlingStats = [
+    {
+      title: 'Avg Bowling Speed',
+      value: '86',
+      unit: 'km/h',
+      change: '+3.2%',
+      trend: 'up',
+      icon: '🎳',
+      color: colors.bowling
+    },
+    {
+      title: 'Bowling Accuracy',
+      value: '82%',
+      unit: '',
+      change: '+5%',
+      trend: 'up',
+      icon: '🎯',
+      color: colors.success
+    },
+    {
+      title: 'Overs Bowled',
+      value: '156',
+      unit: '',
+      change: '+12',
+      trend: 'up',
+      icon: '⏱️',
+      color: colors.warning
+    },
+    {
+      title: 'Economy Rate',
+      value: '6.2',
+      unit: '',
+      change: '-0.5',
+      trend: 'down',
+      icon: '📊',
+      color: colors.info
+    },
+  ];
+
+  const stats = viewMode === 'bowling' ? bowlingStats : battingStats;
+
   const getSeverityColor = (severity: string) => {
     switch (severity) {
       case 'low': return colors.success;
@@ -145,7 +190,7 @@ const Dashboard: React.FC = () => {
             </h1>
             <p className="page-subtitle">Here's your training performance overview</p>
           </div>
-          <div style={{ display: 'flex', gap: 8 }}>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
             <button
               onClick={() => setActiveTab('player')}
               style={{
@@ -185,6 +230,63 @@ const Dashboard: React.FC = () => {
               Coach View
             </button>
           </div>
+          {activeTab === 'player' && (
+            <div style={{ display: 'flex', gap: 8, marginTop: 16 }}>
+              <button
+                onClick={() => setViewMode('batting')}
+                style={{
+                  padding: '8px 16px',
+                  background: viewMode === 'batting' ? colors.accent : 'var(--card-bg)',
+                  border: viewMode === 'batting' ? 'none' : '1px solid var(--border-color)',
+                  borderRadius: 'var(--radius-md)',
+                  color: viewMode === 'batting' ? '#000' : 'var(--text-secondary)',
+                  cursor: 'pointer',
+                  fontWeight: 600,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 6,
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                <Icon path={mdiCricket} size={0.75} />
+                Batting
+              </button>
+              <button
+                onClick={() => setViewMode('bowling')}
+                style={{
+                  padding: '8px 16px',
+                  background: viewMode === 'bowling' ? colors.bowling : 'var(--card-bg)',
+                  border: viewMode === 'bowling' ? 'none' : '1px solid var(--border-color)',
+                  borderRadius: 'var(--radius-md)',
+                  color: viewMode === 'bowling' ? '#000' : 'var(--text-secondary)',
+                  cursor: 'pointer',
+                  fontWeight: 600,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 6,
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                <Icon path={mdiSpeedometer} size={0.75} />
+                Bowling
+              </button>
+              <button
+                onClick={() => setViewMode('all')}
+                style={{
+                  padding: '8px 16px',
+                  background: viewMode === 'all' ? 'var(--gradient-accent)' : 'var(--card-bg)',
+                  border: viewMode === 'all' ? 'none' : '1px solid var(--border-color)',
+                  borderRadius: 'var(--radius-md)',
+                  color: viewMode === 'all' ? 'var(--primary-color)' : 'var(--text-secondary)',
+                  cursor: 'pointer',
+                  fontWeight: 600,
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                All Stats
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
@@ -419,6 +521,184 @@ const Dashboard: React.FC = () => {
             </div>
           </motion.div>
 
+          {/* Bowling Stats Section */}
+          {(viewMode === 'bowling' || viewMode === 'all') && (
+            <>
+              <div style={{ marginTop: 32 }}>
+                <h2 style={{ marginBottom: 24, color: colors.bowling, display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <Icon path={mdiSpeedometer} size={1} />
+                  Bowling Statistics
+                </h2>
+              </div>
+
+              <div className="grid-4" style={{ marginBottom: 32 }}>
+                <motion.div
+                  className="stat-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  style={{ borderColor: colors.bowling }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 }}>
+                    <div
+                      style={{
+                        width: 48,
+                        height: 48,
+                        borderRadius: 'var(--radius-md)',
+                        background: colors.bowling + '20',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}
+                    >
+                      <Icon path={mdiSpeedometer} size={1} color={colors.bowling} />
+                    </div>
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 4,
+                        color: colors.success,
+                        fontSize: '0.875rem',
+                        fontWeight: 600
+                      }}
+                    >
+                      <Icon path={mdiArrowUpRight} size={0.75} />
+                      +3.2%
+                    </div>
+                  </div>
+                  <div className="metric-value" style={{ fontSize: '2rem', color: colors.bowling }}>
+                    86
+                  </div>
+                  <div className="metric-label">Avg Bowling Speed</div>
+                </motion.div>
+
+                <motion.div
+                  className="stat-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  style={{ borderColor: colors.success }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 }}>
+                    <div
+                      style={{
+                        width: 48,
+                        height: 48,
+                        borderRadius: 'var(--radius-md)',
+                        background: colors.success + '20',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}
+                    >
+                      <Icon path={mdiTarget} size={1} color={colors.success} />
+                    </div>
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 4,
+                        color: colors.success,
+                        fontSize: '0.875rem',
+                        fontWeight: 600
+                      }}
+                    >
+                      <Icon path={mdiArrowUpRight} size={0.75} />
+                      +5%
+                    </div>
+                  </div>
+                  <div className="metric-value" style={{ fontSize: '2rem', color: colors.success }}>
+                    82%
+                  </div>
+                  <div className="metric-label">Bowling Accuracy</div>
+                </motion.div>
+
+                <motion.div
+                  className="stat-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  style={{ borderColor: colors.warning }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 }}>
+                    <div
+                      style={{
+                        width: 48,
+                        height: 48,
+                        borderRadius: 'var(--radius-md)',
+                        background: colors.warning + '20',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}
+                    >
+                      <Icon path={mdiCricket} size={1} color={colors.warning} />
+                    </div>
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 4,
+                        color: colors.success,
+                        fontSize: '0.875rem',
+                        fontWeight: 600
+                      }}
+                    >
+                      <Icon path={mdiArrowUpRight} size={0.75} />
+                      +12
+                    </div>
+                  </div>
+                  <div className="metric-value" style={{ fontSize: '2rem', color: colors.warning }}>
+                    156
+                  </div>
+                  <div className="metric-label">Overs Bowled</div>
+                </motion.div>
+
+                <motion.div
+                  className="stat-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  style={{ borderColor: colors.info }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 }}>
+                    <div
+                      style={{
+                        width: 48,
+                        height: 48,
+                        borderRadius: 'var(--radius-md)',
+                        background: colors.info + '20',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}
+                    >
+                      <Icon path={mdiTrendingUp} size={1} color={colors.info} />
+                    </div>
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 4,
+                        color: colors.success,
+                        fontSize: '0.875rem',
+                        fontWeight: 600
+                      }}
+                    >
+                      <Icon path={mdiArrowUpRight} size={0.75} />
+                      +2
+                    </div>
+                  </div>
+                  <div className="metric-value" style={{ fontSize: '2rem', color: colors.info }}>
+                    6.2
+                  </div>
+                  <div className="metric-label">Economy Rate</div>
+                </motion.div>
+              </div>
+            </>
+          )}
+
           {/* Quick Actions */}
           <div className="grid-3" style={{ marginTop: 32 }}>
             <motion.div
@@ -429,11 +709,13 @@ const Dashboard: React.FC = () => {
               style={{ padding: 24, textAlign: 'center' }}
             >
               <div className="emoji-icon" style={{ fontSize: '2.5rem', marginBottom: 16, display: 'flex', justifyContent: 'center' }}>📹</div>
-              <h4 style={{ marginBottom: 8 }}>Upload Video</h4>
+              <h4 style={{ marginBottom: 8 }}>
+                {viewMode === 'bowling' ? 'Upload Bowling Video' : 'Upload Video'}
+              </h4>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: 16 }}>
-                Analyze your latest swing footage
+                {viewMode === 'bowling' ? 'Analyze your bowling action' : 'Analyze your latest swing footage'}
               </p>
-              <Link to="/analysis" className="btn-primary" style={{ textDecoration: 'none' }}>
+              <Link to={viewMode === 'bowling' ? '/bowling-analysis' : '/analysis'} className="btn-primary" style={{ textDecoration: 'none' }}>
                 Get Started
               </Link>
             </motion.div>
@@ -450,7 +732,7 @@ const Dashboard: React.FC = () => {
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: 16 }}>
                 Track your improvement journey
               </p>
-              <Link to="/progress" className="btn-primary" style={{ textDecoration: 'none' }}>
+              <Link to={viewMode === 'bowling' ? '/bowling-progress' : '/progress'} className="btn-primary" style={{ textDecoration: 'none' }}>
                 View Progress
               </Link>
             </motion.div>

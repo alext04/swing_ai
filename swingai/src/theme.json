@@ -18,6 +18,12 @@
     "green": "#48A111",
     "greenEnd": "#48A111"
   },
+  "bowling": {
+    "main": "#48A111",
+    "light": "#58B81E",
+    "dark": "#25671E",
+    "accent": "#F0E7C2"
+  },
   "text": {
     "primary": "#48A111",
     "secondary": "#D1D1D6",
@@ -41,6 +47,9 @@
     "series1": "#687451",
     "series2": "#F0E7C2",
     "series3": "#954130",
+    "bowling1": "#687451",
+    "bowling2": "#F0E7C2",
+    "bowling3": "#954130",
     "legacyBlue": "#687451",
     "legacyTeal": "#F0E7C2"
   },
@@ -52,6 +61,7 @@
   },
   "shadows": {
     "accent": "#0A0D07",
+    "bowling": "#0A0D07",
     "lg": "#0A0D07",
     "md": "#0A0D07",
     "sm": "#0A0D07",
