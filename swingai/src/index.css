@@ -3,7 +3,7 @@
   --radius-lg: 28px;
   --radius-md: 18px;
   --radius-sm: 12px;
-  --font-body: 'Geist Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Barlow Semi Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-display: 'Barlow Semi Condensed', -apple-system, sans-serif;
   --bs-body-font-family: var(--font-body);
   --bs-font-sans-serif: var(--font-body);
