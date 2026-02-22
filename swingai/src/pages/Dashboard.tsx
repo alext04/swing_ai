@@ -32,13 +32,13 @@ import {
 } from 'recharts';
 
 const sampleData = [
-  { date: 'Mon', batSpeed: 85, consistency: 78 },
-  { date: 'Tue', batSpeed: 88, consistency: 82 },
-  { date: 'Wed', batSpeed: 87, consistency: 80 },
-  { date: 'Thu', batSpeed: 92, consistency: 85 },
-  { date: 'Fri', batSpeed: 90, consistency: 88 },
-  { date: 'Sat', batSpeed: 95, consistency: 90 },
-  { date: 'Sun', batSpeed: 93, consistency: 87 },
+  { date: 'Mon', batSpeed: 85, consistency: 78, bowlSpeed: 82 },
+  { date: 'Tue', batSpeed: 88, consistency: 82, bowlSpeed: 84 },
+  { date: 'Wed', batSpeed: 87, consistency: 80, bowlSpeed: 83 },
+  { date: 'Thu', batSpeed: 92, consistency: 85, bowlSpeed: 86 },
+  { date: 'Fri', batSpeed: 90, consistency: 88, bowlSpeed: 85 },
+  { date: 'Sat', batSpeed: 95, consistency: 90, bowlSpeed: 88 },
+  { date: 'Sun', batSpeed: 93, consistency: 87, bowlSpeed: 87 },
 ];
 
 const recentSwings = [
@@ -63,12 +63,12 @@ const teamStats = [
 ];
 
 const playerProgress = [
-  { name: 'Rohit S.', batSpeed: 92, consistency: 88, form: 90 },
-  { name: 'Virat K.', batSpeed: 89, consistency: 92, form: 88 },
-  { name: 'KL Rahul', batSpeed: 87, consistency: 85, form: 82 },
-  { name: 'Shreyas I.', batSpeed: 85, consistency: 83, form: 85 },
-  { name: 'Hardik P.', batSpeed: 94, consistency: 80, form: 87 },
-  { name: 'Rishabh P.', batSpeed: 91, consistency: 86, form: 89 },
+  { name: 'Rohit S.', batSpeed: 92, consistency: 88, form: 90, bowlSpeed: 0, bowlAccuracy: 0 },
+  { name: 'Virat K.', batSpeed: 89, consistency: 92, form: 88, bowlSpeed: 0, bowlAccuracy: 0 },
+  { name: 'KL Rahul', batSpeed: 87, consistency: 85, form: 82, bowlSpeed: 0, bowlAccuracy: 0 },
+  { name: 'Shreyas I.', batSpeed: 85, consistency: 83, form: 85, bowlSpeed: 0, bowlAccuracy: 0 },
+  { name: 'Hardik P.', batSpeed: 94, consistency: 80, form: 87, bowlSpeed: 82, bowlAccuracy: 78 },
+  { name: 'Rishabh P.', batSpeed: 91, consistency: 86, form: 89, bowlSpeed: 0, bowlAccuracy: 0 },
 ];
 
 const Dashboard: React.FC = () => {
@@ -265,9 +265,9 @@ const Dashboard: React.FC = () => {
               transition={{ delay: 0.4 }}
               style={{ padding: 24 }}
             >
-              <h3 style={{ marginBottom: 8 }}>Bat Speed Trend</h3>
+              <h3 style={{ marginBottom: 8 }}>Speed Trend (Batting & Bowling)</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: 24 }}>
-                Average speed over the last {timeRange}
+                Average batting and bowling speed over the last {timeRange}
               </p>
               <div style={{ height: 250 }}>
                 <ResponsiveContainer width="100%" height="100%">
@@ -276,6 +276,10 @@ const Dashboard: React.FC = () => {
                       <linearGradient id="colorSpeed" x1="0" y1="0" x2="0" y2="1">
                         <stop offset="5%" stopColor={colors.chartSeries1} stopOpacity={0.4} />
                         <stop offset="95%" stopColor={colors.chartSeries1} stopOpacity={0} />
+                      </linearGradient>
+                      <linearGradient id="colorBowl" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor={colors.chartSeries2} stopOpacity={0.25} />
+                        <stop offset="95%" stopColor={colors.chartSeries2} stopOpacity={0} />
                       </linearGradient>
                     </defs>
                     <CartesianGrid strokeDasharray="3 3" stroke={colors.chartGridDark} />
@@ -295,6 +299,14 @@ const Dashboard: React.FC = () => {
                       strokeWidth={3}
                       fillOpacity={1}
                       fill="url(#colorSpeed)"
+                    />
+                    <Area
+                      type="monotone"
+                      dataKey="bowlSpeed"
+                      stroke={colors.chartSeries2}
+                      strokeWidth={2}
+                      fillOpacity={1}
+                      fill="url(#colorBowl)"
                     />
                   </AreaChart>
                 </ResponsiveContainer>
@@ -608,8 +620,9 @@ const Dashboard: React.FC = () => {
                         }}
                       />
                       <Legend />
-                      <Bar name="Avg Speed" dataKey="batSpeed" fill={colors.chartSeries1} radius={[4, 4, 0, 0]} />
-                      <Bar name="Consistency" dataKey="consistency" fill={colors.chartSeries2} radius={[4, 4, 0, 0]} />
+                      <Bar name="Avg Bat Speed" dataKey="batSpeed" fill={colors.chartSeries1} radius={[4, 4, 0, 0]} />
+                      <Bar name="Avg Bowl Speed" dataKey="bowlSpeed" fill={colors.chartSeries2} radius={[4, 4, 0, 0]} />
+                      <Bar name="Consistency" dataKey="consistency" fill={colors.chartSeries3} radius={[4, 4, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
@@ -641,6 +654,7 @@ const Dashboard: React.FC = () => {
                   <tr style={{ borderBottom: '1px solid var(--border-color)' }}>
                     <th style={{ padding: 12, textAlign: 'left', color: 'var(--text-secondary)', fontWeight: 600 }}>Player</th>
                     <th style={{ padding: 12, textAlign: 'left', color: 'var(--text-secondary)', fontWeight: 600 }}>Bat Speed</th>
+                    <th style={{ padding: 12, textAlign: 'left', color: 'var(--text-secondary)', fontWeight: 600 }}>Bowl Speed</th>
                     <th style={{ padding: 12, textAlign: 'left', color: 'var(--text-secondary)', fontWeight: 600 }}>Consistency</th>
                     <th style={{ padding: 12, textAlign: 'left', color: 'var(--text-secondary)', fontWeight: 600 }}>Current Form</th>
                     <th style={{ padding: 12, textAlign: 'left', color: 'var(--text-secondary)', fontWeight: 600 }}>Overall Rating</th>
@@ -671,6 +685,30 @@ const Dashboard: React.FC = () => {
                               {player.batSpeed}
                             </span>
                           </div>
+                        </td>
+                        <td style={{ padding: 16 }}>
+                          {player.bowlSpeed > 0 ? (
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                              <div className="progress-bar" style={{ width: 100 }}>
+                                <div
+                                  className="progress-fill"
+                                  style={{
+                                    width: `${player.bowlSpeed}%`,
+                                    background: player.bowlSpeed >= 85 ? 'var(--success-color)' :
+                                      player.bowlSpeed >= 70 ? 'var(--accent-color)' : 'var(--warning-color)'
+                                  }}
+                                />
+                              </div>
+                              <span style={{
+                                fontWeight: 600, color: player.bowlSpeed >= 85 ? 'var(--success-color)' :
+                                  player.bowlSpeed >= 70 ? 'var(--accent-color)' : 'var(--warning-color)'
+                              }}>
+                                {player.bowlSpeed}
+                              </span>
+                            </div>
+                          ) : (
+                            <span style={{ color: 'var(--text-secondary)' }}>—</span>
+                          )}
                         </td>
                         <td style={{ padding: 16 }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>

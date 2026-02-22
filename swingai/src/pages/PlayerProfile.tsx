@@ -60,13 +60,15 @@ const playerData = {
       { date: '2024-02-16', type: 'Front Foot Drive', score: 86 },
     ],
     performanceHistory: [
-      { month: 'Jan', batSpeed: 88, consistency: 85, form: 82 },
-      { month: 'Feb', batSpeed: 90, consistency: 87, form: 86 },
-      { month: 'Mar', batSpeed: 91, consistency: 88, form: 88 },
-      { month: 'Apr', batSpeed: 92, consistency: 89, form: 90 },
-      { month: 'May', batSpeed: 92, consistency: 88, form: 90 },
-      { month: 'Jun', batSpeed: 92, consistency: 88, form: 90 },
-    ]
+      { month: 'Jan', batSpeed: 88, bowlSpeed: 80, consistency: 85, form: 82, bowlAccuracy: 78 },
+      { month: 'Feb', batSpeed: 90, bowlSpeed: 81, consistency: 87, form: 86, bowlAccuracy: 79 },
+      { month: 'Mar', batSpeed: 91, bowlSpeed: 82, consistency: 88, form: 88, bowlAccuracy: 80 },
+      { month: 'Apr', batSpeed: 92, bowlSpeed: 83, consistency: 89, form: 90, bowlAccuracy: 81 },
+      { month: 'May', batSpeed: 92, bowlSpeed: 83, consistency: 88, form: 90, bowlAccuracy: 81 },
+      { month: 'Jun', batSpeed: 92, bowlSpeed: 83, consistency: 88, form: 90, bowlAccuracy: 81 },
+    ],
+    bowlingSpeed: 82,
+    bowlingAccuracy: 80
   },
   2: {
     id: 2,
@@ -94,13 +96,15 @@ const playerData = {
       { date: '2024-02-16', type: 'Late Cut', score: 92 },
     ],
     performanceHistory: [
-      { month: 'Jan', batSpeed: 86, consistency: 90, form: 85 },
-      { month: 'Feb', batSpeed: 87, consistency: 91, form: 86 },
-      { month: 'Mar', batSpeed: 88, consistency: 92, form: 87 },
-      { month: 'Apr', batSpeed: 89, consistency: 92, form: 88 },
-      { month: 'May', batSpeed: 89, consistency: 92, form: 88 },
-      { month: 'Jun', batSpeed: 89, consistency: 92, form: 88 },
-    ]
+      { month: 'Jan', batSpeed: 86, bowlSpeed: 0, consistency: 90, form: 85, bowlAccuracy: 0 },
+      { month: 'Feb', batSpeed: 87, bowlSpeed: 0, consistency: 91, form: 86, bowlAccuracy: 0 },
+      { month: 'Mar', batSpeed: 88, bowlSpeed: 0, consistency: 92, form: 87, bowlAccuracy: 0 },
+      { month: 'Apr', batSpeed: 89, bowlSpeed: 0, consistency: 92, form: 88, bowlAccuracy: 0 },
+      { month: 'May', batSpeed: 89, bowlSpeed: 0, consistency: 92, form: 88, bowlAccuracy: 0 },
+      { month: 'Jun', batSpeed: 89, bowlSpeed: 0, consistency: 92, form: 88, bowlAccuracy: 0 },
+    ],
+    bowlingSpeed: 0,
+    bowlingAccuracy: 0
   },
   3: {
     id: 3,
@@ -128,13 +132,15 @@ const playerData = {
       { date: '2024-02-11', type: 'Flick Shot', score: 86 },
     ],
     performanceHistory: [
-      { month: 'Jan', batSpeed: 85, consistency: 82, form: 80 },
-      { month: 'Feb', batSpeed: 86, consistency: 84, form: 81 },
-      { month: 'Mar', batSpeed: 87, consistency: 85, form: 82 },
-      { month: 'Apr', batSpeed: 87, consistency: 85, form: 82 },
-      { month: 'May', batSpeed: 87, consistency: 85, form: 82 },
-      { month: 'Jun', batSpeed: 87, consistency: 85, form: 82 },
-    ]
+      { month: 'Jan', batSpeed: 85, bowlSpeed: 0, consistency: 82, form: 80, bowlAccuracy: 0 },
+      { month: 'Feb', batSpeed: 86, bowlSpeed: 0, consistency: 84, form: 81, bowlAccuracy: 0 },
+      { month: 'Mar', batSpeed: 87, bowlSpeed: 0, consistency: 85, form: 82, bowlAccuracy: 0 },
+      { month: 'Apr', batSpeed: 87, bowlSpeed: 0, consistency: 85, form: 82, bowlAccuracy: 0 },
+      { month: 'May', batSpeed: 87, bowlSpeed: 0, consistency: 85, form: 82, bowlAccuracy: 0 },
+      { month: 'Jun', batSpeed: 87, bowlSpeed: 0, consistency: 85, form: 82, bowlAccuracy: 0 },
+    ],
+    bowlingSpeed: 0,
+    bowlingAccuracy: 0
   },
   4: {
     id: 4,
@@ -162,13 +168,15 @@ const playerData = {
       { date: '2024-02-16', type: 'Cut Shot', score: 84 },
     ],
     performanceHistory: [
-      { month: 'Feb', batSpeed: 83, consistency: 80, form: 82 },
-      { month: 'Mar', batSpeed: 84, consistency: 82, form: 84 },
-      { month: 'Apr', batSpeed: 85, consistency: 83, form: 85 },
-      { month: 'May', batSpeed: 85, consistency: 83, form: 85 },
-      { month: 'Jun', batSpeed: 85, consistency: 83, form: 85 },
-      { month: 'Jul', batSpeed: 85, consistency: 83, form: 85 },
-    ]
+      { month: 'Feb', batSpeed: 83, bowlSpeed: 0, consistency: 80, form: 82, bowlAccuracy: 0 },
+      { month: 'Mar', batSpeed: 84, bowlSpeed: 0, consistency: 82, form: 84, bowlAccuracy: 0 },
+      { month: 'Apr', batSpeed: 85, bowlSpeed: 0, consistency: 83, form: 85, bowlAccuracy: 0 },
+      { month: 'May', batSpeed: 85, bowlSpeed: 0, consistency: 83, form: 85, bowlAccuracy: 0 },
+      { month: 'Jun', batSpeed: 85, bowlSpeed: 0, consistency: 83, form: 85, bowlAccuracy: 0 },
+      { month: 'Jul', batSpeed: 85, bowlSpeed: 0, consistency: 83, form: 85, bowlAccuracy: 0 },
+    ],
+    bowlingSpeed: 0,
+    bowlingAccuracy: 0
   },
   5: {
     id: 5,
@@ -196,13 +204,15 @@ const playerData = {
       { date: '2024-02-16', type: 'Cover Drive', score: 82 },
     ],
     performanceHistory: [
-      { month: 'Jan', batSpeed: 92, consistency: 78, form: 84 },
-      { month: 'Feb', batSpeed: 93, consistency: 79, form: 85 },
-      { month: 'Mar', batSpeed: 94, consistency: 80, form: 86 },
-      { month: 'Apr', batSpeed: 94, consistency: 80, form: 87 },
-      { month: 'May', batSpeed: 94, consistency: 80, form: 87 },
-      { month: 'Jun', batSpeed: 94, consistency: 80, form: 87 },
-    ]
+      { month: 'Jan', batSpeed: 92, bowlSpeed: 82, consistency: 78, form: 84, bowlAccuracy: 78 },
+      { month: 'Feb', batSpeed: 93, bowlSpeed: 83, consistency: 79, form: 85, bowlAccuracy: 79 },
+      { month: 'Mar', batSpeed: 94, bowlSpeed: 84, consistency: 80, form: 86, bowlAccuracy: 80 },
+      { month: 'Apr', batSpeed: 94, bowlSpeed: 84, consistency: 80, form: 87, bowlAccuracy: 80 },
+      { month: 'May', batSpeed: 94, bowlSpeed: 84, consistency: 80, form: 87, bowlAccuracy: 80 },
+      { month: 'Jun', batSpeed: 94, bowlSpeed: 84, consistency: 80, form: 87, bowlAccuracy: 80 },
+    ],
+    bowlingSpeed: 84,
+    bowlingAccuracy: 79
   },
   6: {
     id: 6,
@@ -230,13 +240,15 @@ const playerData = {
       { date: '2024-02-16', type: 'Flick Shot', score: 92 },
     ],
     performanceHistory: [
-      { month: 'Feb', batSpeed: 89, consistency: 84, form: 86 },
-      { month: 'Mar', batSpeed: 90, consistency: 85, form: 87 },
-      { month: 'Apr', batSpeed: 91, consistency: 86, form: 88 },
-      { month: 'May', batSpeed: 91, consistency: 86, form: 89 },
-      { month: 'Jun', batSpeed: 91, consistency: 86, form: 89 },
-      { month: 'Jul', batSpeed: 91, consistency: 86, form: 89 },
-    ]
+      { month: 'Feb', batSpeed: 89, bowlSpeed: 0, consistency: 84, form: 86, bowlAccuracy: 0 },
+      { month: 'Mar', batSpeed: 90, bowlSpeed: 0, consistency: 85, form: 87, bowlAccuracy: 0 },
+      { month: 'Apr', batSpeed: 91, bowlSpeed: 0, consistency: 86, form: 88, bowlAccuracy: 0 },
+      { month: 'May', batSpeed: 91, bowlSpeed: 0, consistency: 86, form: 89, bowlAccuracy: 0 },
+      { month: 'Jun', batSpeed: 91, bowlSpeed: 0, consistency: 86, form: 89, bowlAccuracy: 0 },
+      { month: 'Jul', batSpeed: 91, bowlSpeed: 0, consistency: 86, form: 89, bowlAccuracy: 0 },
+    ],
+    bowlingSpeed: 0,
+    bowlingAccuracy: 0
   }
 };
 
@@ -260,16 +272,17 @@ const PlayerProfile: React.FC = () => {
     );
   }
 
-  const overallRating = Math.round((player.batSpeed + player.consistency + player.form) / 3);
+  const overallRating = Math.round((player.batSpeed + player.consistency + player.form + (player.bowlingSpeed || 0)) / (player.bowlingSpeed ? 4 : 3));
 
-  const radarData = [
-    { subject: 'Bat Speed', value: player.batSpeed, fullMark: 100 },
-    { subject: 'Consistency', value: player.consistency, fullMark: 100 },
-    { subject: 'Form', value: player.form, fullMark: 100 },
-    { subject: 'Experience', value: Math.min(player.matchesPlayed * 3, 100), fullMark: 100 },
-    { subject: 'Fitness', value: player.injuryStatus === 'fit' ? 95 : player.injuryStatus === 'minor' ? 70 : 50, fullMark: 100 },
-    { subject: 'Technique', value: player.avgScore, fullMark: 100 },
-  ];
+  const radarData = [] as Array<{ subject: string; value: number; fullMark: number }>;
+  radarData.push({ subject: 'Bat Speed', value: player.batSpeed, fullMark: 100 });
+  if (player.bowlingSpeed && player.bowlingSpeed > 0) {
+    radarData.push({ subject: 'Bowl Speed', value: player.bowlingSpeed, fullMark: 100 });
+  }
+  radarData.push({ subject: 'Consistency', value: player.consistency, fullMark: 100 });
+  radarData.push({ subject: 'Form', value: player.form, fullMark: 100 });
+  radarData.push({ subject: 'Fitness', value: player.injuryStatus === 'fit' ? 95 : player.injuryStatus === 'minor' ? 70 : 50, fullMark: 100 });
+  radarData.push({ subject: 'Technique', value: player.avgScore, fullMark: 100 });
 
   const getInjuryColor = (status: string) => {
     switch(status) {
@@ -453,11 +466,13 @@ const PlayerProfile: React.FC = () => {
           {/* Key Metrics */}
           <div className="grid-4" style={{ marginBottom: 24 }}>
             {[
-              { label: 'Bat Speed', value: player.batSpeed, unit: 'km/h', color: 'var(--accent-color)' },
-              { label: 'Consistency', value: player.consistency, unit: '/100', color: 'var(--success-color)' },
-              { label: 'Current Form', value: player.form, unit: '/100', color: 'var(--warning-color)' },
-              { label: 'Avg Score', value: player.avgScore, unit: '', color: 'var(--primary-color)' }
-            ].map((metric, index) => (
+                { label: 'Bat Speed', value: player.batSpeed, unit: 'km/h', color: 'var(--accent-color)' },
+                { label: 'Bowl Speed', value: player.bowlingSpeed || 0, unit: 'km/h', color: 'var(--primary-color)' },
+                { label: 'Bowl Accuracy', value: player.bowlingAccuracy || 0, unit: '/100', color: 'var(--success-color)' },
+                { label: 'Consistency', value: player.consistency, unit: '/100', color: 'var(--success-color)' },
+                { label: 'Current Form', value: player.form, unit: '/100', color: 'var(--warning-color)' },
+                { label: 'Avg Score', value: player.avgScore, unit: '', color: 'var(--primary-color)' }
+              ].filter(m => !( (m.label === 'Bowl Speed' || m.label === 'Bowl Accuracy') && m.value === 0 )).map((metric, index) => (
               <motion.div
                 key={metric.label}
                 className="stat-card"
@@ -499,8 +514,9 @@ const PlayerProfile: React.FC = () => {
                     />
                     <Legend />
                     <Line type="monotone" dataKey="batSpeed" name="Bat Speed" stroke={colors.chartSeries1} strokeWidth={2} dot={false} />
-                    <Line type="monotone" dataKey="consistency" name="Consistency" stroke={colors.chartSeries2} strokeWidth={2} dot={false} />
-                    <Line type="monotone" dataKey="form" name="Form" stroke={colors.chartSeries3} strokeWidth={2} dot={false} />
+                    <Line type="monotone" dataKey="bowlSpeed" name="Bowl Speed" stroke={colors.chartSeries2} strokeWidth={2} dot={false} />
+                    <Line type="monotone" dataKey="consistency" name="Consistency" stroke={colors.chartSeries3} strokeWidth={2} dot={false} />
+                    <Line type="monotone" dataKey="form" name="Form" stroke={colors.accent} strokeWidth={2} dot={false} />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
@@ -607,7 +623,8 @@ const PlayerProfile: React.FC = () => {
                 />
                 <Legend />
                 <Bar dataKey="batSpeed" name="Bat Speed" fill={colors.chartSeries1} radius={[4, 4, 0, 0]} />
-                <Bar dataKey="consistency" name="Consistency" fill={colors.chartSeries2} radius={[4, 4, 0, 0]} />
+                <Bar dataKey="bowlSpeed" name="Bowl Speed" fill={colors.chartSeries2} radius={[4, 4, 0, 0]} />
+                <Bar dataKey="consistency" name="Consistency" fill={colors.chartSeries3} radius={[4, 4, 0, 0]} />
                 <Bar dataKey="form" name="Form" fill={colors.chartSeries3} radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>

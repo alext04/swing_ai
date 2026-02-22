@@ -23,12 +23,12 @@ import {
 } from 'recharts';
 
 const monthlyData = [
-  { month: 'Jan', batSpeed: 78, consistency: 72, average: 75 },
-  { month: 'Feb', batSpeed: 82, consistency: 76, average: 79 },
-  { month: 'Mar', batSpeed: 85, consistency: 80, average: 82 },
-  { month: 'Apr', batSpeed: 88, consistency: 82, average: 85 },
-  { month: 'May', batSpeed: 90, consistency: 85, average: 87 },
-  { month: 'Jun', batSpeed: 92, consistency: 88, average: 90 },
+  { month: 'Jan', batSpeed: 78, bowlSpeed: 74, consistency: 72, average: 75 },
+  { month: 'Feb', batSpeed: 82, bowlSpeed: 76, consistency: 76, average: 79 },
+  { month: 'Mar', batSpeed: 85, bowlSpeed: 78, consistency: 80, average: 82 },
+  { month: 'Apr', batSpeed: 88, bowlSpeed: 80, consistency: 82, average: 85 },
+  { month: 'May', batSpeed: 90, bowlSpeed: 82, consistency: 85, average: 87 },
+  { month: 'Jun', batSpeed: 92, bowlSpeed: 84, consistency: 88, average: 90 },
 ];
 
 const shotTypeData = [
@@ -157,6 +157,41 @@ const ProgressTracking: React.FC = () => {
         </motion.div>
       </div>
 
+      {/* Bowling Quick Stats (visible alongside batting) */}
+      <div className="grid-2" style={{ marginBottom: 32 }}>
+        <motion.div
+          className="stat-card"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
+            <span style={{ fontSize: '2rem' }}>🏹</span>
+            <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Avg Bowl Speed</span>
+          </div>
+          <div className="metric-value" style={{ fontSize: '1.75rem' }}>82 km/h</div>
+          <div style={{ fontSize: '0.75rem', color: 'var(--success-color)', marginTop: 4 }}>
+            +1.8% vs last month
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="stat-card"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
+            <span style={{ fontSize: '2rem' }}>🎯</span>
+            <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Bowl Accuracy</span>
+          </div>
+          <div className="metric-value" style={{ fontSize: '1.75rem' }}>79</div>
+          <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: 4 }}>
+            Good control on target
+          </div>
+        </motion.div>
+      </div>
+
       {/* Time Range & Filters */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24, flexWrap: 'wrap', gap: 12 }}>
         <div style={{ display: 'flex', gap: 8 }}>
@@ -234,6 +269,10 @@ const ProgressTracking: React.FC = () => {
                       <stop offset="5%" stopColor={colors.legacyBlue} stopOpacity={0.3} />
                       <stop offset="95%" stopColor={colors.legacyBlue} stopOpacity={0} />
                     </linearGradient>
+                    <linearGradient id="colorBowlSpeed" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor={colors.legacyTeal} stopOpacity={0.25} />
+                      <stop offset="95%" stopColor={colors.legacyTeal} stopOpacity={0} />
+                    </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke={colors.chartGrid} />
                   <XAxis dataKey="month" stroke={colors.chartAxis} />
@@ -254,6 +293,15 @@ const ProgressTracking: React.FC = () => {
                     strokeWidth={3}
                     fillOpacity={1}
                     fill="url(#colorBatSpeed)"
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="bowlSpeed"
+                    name="Bowl Speed"
+                    stroke={colors.legacyTeal}
+                    strokeWidth={2}
+                    fillOpacity={1}
+                    fill="url(#colorBowlSpeed)"
                   />
                   <Line
                     type="monotone"
