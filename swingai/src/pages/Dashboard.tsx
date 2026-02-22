@@ -141,9 +141,9 @@ const Dashboard: React.FC = () => {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
           <div>
             <h1 className="page-title">
-              Welcome back, <span className="gradient-text">Batsman!</span>
+              Welcome back, <span className="gradient-text">Player!</span>
             </h1>
-            <p className="page-subtitle">Here's your cricket swing performance overview</p>
+            <p className="page-subtitle">Here's your training performance overview</p>
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
             <button

@@ -18,7 +18,7 @@ import {
 } from '@mdi/js';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 
-interface SwingMetrics {
+interface BattingMetrics {
   batSpeed: number;
   backliftAngle: number;
   elbowPosition: number;
@@ -29,18 +29,41 @@ interface SwingMetrics {
   headPosition: number;
 }
 
-interface AnalysisResult {
-  overallScore: number;
-  metrics: SwingMetrics;
-  strengths: string[];
-  improvements: string[];
-  shotType: string;
-  stance: string;
+interface BowlingMetrics {
+  bowlingSpeed: number;
+  releaseAngle: number;
+  seamPosition: number;
+  armPath: number;
+  followThrough: number;
+  lineConsistency: number;
+  bounce: number;
+  accuracy: number;
 }
+
+type AnalysisResult =
+  | {
+      discipline: 'batting';
+      overallScore: number;
+      metrics: BattingMetrics;
+      strengths: string[];
+      improvements: string[];
+      shotType: string;
+      stance: string;
+    }
+  | {
+      discipline: 'bowling';
+      overallScore: number;
+      metrics: BowlingMetrics;
+      strengths: string[];
+      improvements: string[];
+      deliveryType: string;
+      runUp: string;
+    };
 
 const SwingAnalysis: React.FC = () => {
   const [, setVideoFile] = useState<File | null>(null);
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
+  const [discipline, setDiscipline] = useState<'batting' | 'bowling'>('batting');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analysisComplete, setAnalysisComplete] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -52,7 +75,8 @@ const SwingAnalysis: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const mockAnalysisResult: AnalysisResult = {
+  const mockAnalysisResult: AnalysisResult = discipline === 'batting' ? {
+    discipline: 'batting',
     overallScore: 87,
     metrics: {
       batSpeed: 92,
@@ -77,17 +101,50 @@ const SwingAnalysis: React.FC = () => {
     ],
     shotType: 'Front Foot Drive',
     stance: 'Side-on'
+  } : {
+    discipline: 'bowling',
+    overallScore: 79,
+    metrics: {
+      bowlingSpeed: 84,
+      releaseAngle: 78,
+      seamPosition: 72,
+      armPath: 80,
+      followThrough: 76,
+      lineConsistency: 70,
+      bounce: 75,
+      accuracy: 82
+    },
+    strengths: [
+      'Consistent release point',
+      'Good arm path for pace generation',
+      'Accurate target hitting'
+    ],
+    improvements: [
+      'Work on seam position for more swing',
+      'Improve line consistency on the good length'
+    ],
+    deliveryType: 'Out-swinger',
+    runUp: 'Smooth, balanced'
   };
 
-  const radarData = [
-    { subject: 'Bat Speed', A: mockAnalysisResult.metrics.batSpeed, fullMark: 100 },
-    { subject: 'Backlift', A: mockAnalysisResult.metrics.backliftAngle, fullMark: 100 },
-    { subject: 'Elbow', A: mockAnalysisResult.metrics.elbowPosition, fullMark: 100 },
-    { subject: 'Weight Transfer', A: mockAnalysisResult.metrics.weightTransfer, fullMark: 100 },
-    { subject: 'Follow Through', A: mockAnalysisResult.metrics.followThrough, fullMark: 100 },
-    { subject: 'Timing', A: mockAnalysisResult.metrics.timing, fullMark: 100 },
-    { subject: 'Balance', A: mockAnalysisResult.metrics.balance, fullMark: 100 },
-    { subject: 'Head Position', A: mockAnalysisResult.metrics.headPosition, fullMark: 100 },
+  const radarData = discipline === 'batting' ? [
+    { subject: 'Bat Speed', A: (mockAnalysisResult as any).metrics.batSpeed, fullMark: 100 },
+    { subject: 'Backlift', A: (mockAnalysisResult as any).metrics.backliftAngle, fullMark: 100 },
+    { subject: 'Elbow', A: (mockAnalysisResult as any).metrics.elbowPosition, fullMark: 100 },
+    { subject: 'Weight Transfer', A: (mockAnalysisResult as any).metrics.weightTransfer, fullMark: 100 },
+    { subject: 'Follow Through', A: (mockAnalysisResult as any).metrics.followThrough, fullMark: 100 },
+    { subject: 'Timing', A: (mockAnalysisResult as any).metrics.timing, fullMark: 100 },
+    { subject: 'Balance', A: (mockAnalysisResult as any).metrics.balance, fullMark: 100 },
+    { subject: 'Head Position', A: (mockAnalysisResult as any).metrics.headPosition, fullMark: 100 },
+  ] : [
+    { subject: 'Speed', A: (mockAnalysisResult as any).metrics.bowlingSpeed, fullMark: 100 },
+    { subject: 'Release', A: (mockAnalysisResult as any).metrics.releaseAngle, fullMark: 100 },
+    { subject: 'Seam', A: (mockAnalysisResult as any).metrics.seamPosition, fullMark: 100 },
+    { subject: 'Arm Path', A: (mockAnalysisResult as any).metrics.armPath, fullMark: 100 },
+    { subject: 'Follow Through', A: (mockAnalysisResult as any).metrics.followThrough, fullMark: 100 },
+    { subject: 'Line Consistency', A: (mockAnalysisResult as any).metrics.lineConsistency, fullMark: 100 },
+    { subject: 'Bounce', A: (mockAnalysisResult as any).metrics.bounce, fullMark: 100 },
+    { subject: 'Accuracy', A: (mockAnalysisResult as any).metrics.accuracy, fullMark: 100 },
   ];
 
   const handleFileSelect = useCallback((file: File) => {
@@ -191,7 +248,36 @@ const SwingAnalysis: React.FC = () => {
         <h1 className="page-title">
           <span className="gradient-text">Swing Analysis</span>
         </h1>
-        <p className="page-subtitle">Upload your batting video for AI-powered analysis</p>
+        <p className="page-subtitle">Upload your batting or bowling video for AI-powered analysis</p>
+      </div>
+
+      <div style={{ display: 'flex', gap: 12, marginBottom: 16 }}>
+        <button
+          onClick={() => setDiscipline('batting')}
+          style={{
+            padding: '8px 12px',
+            background: discipline === 'batting' ? 'var(--primary-color)' : 'var(--card-bg)',
+            border: '1px solid var(--border-color)',
+            color: discipline === 'batting' ? 'white' : 'var(--text-secondary)',
+            borderRadius: 'var(--radius-sm)',
+            cursor: 'pointer'
+          }}
+        >
+          Batting
+        </button>
+        <button
+          onClick={() => setDiscipline('bowling')}
+          style={{
+            padding: '8px 12px',
+            background: discipline === 'bowling' ? 'var(--primary-color)' : 'var(--card-bg)',
+            border: '1px solid var(--border-color)',
+            color: discipline === 'bowling' ? 'white' : 'var(--text-secondary)',
+            borderRadius: 'var(--radius-sm)',
+            cursor: 'pointer'
+          }}
+        >
+          Bowling
+        </button>
       </div>
 
       <AnimatePresence mode="wait">
@@ -356,14 +442,29 @@ const SwingAnalysis: React.FC = () => {
                       borderRadius: 'var(--radius-md)',
                       fontSize: '0.75rem'
                     }}>
-                      <div style={{ marginBottom: 8 }}>
-                        <span style={{ color: 'var(--text-secondary)' }}>Shot: </span>
-                        <span style={{ color: 'var(--success-color)' }}>{mockAnalysisResult.shotType}</span>
-                      </div>
-                      <div>
-                        <span style={{ color: 'var(--text-secondary)' }}>Stance: </span>
-                        <span style={{ color: 'var(--success-color)' }}>{mockAnalysisResult.stance}</span>
-                      </div>
+                      {discipline === 'batting' ? (
+                        <>
+                          <div style={{ marginBottom: 8 }}>
+                            <span style={{ color: 'var(--text-secondary)' }}>Shot: </span>
+                            <span style={{ color: 'var(--success-color)' }}>{(mockAnalysisResult as any).shotType}</span>
+                          </div>
+                          <div>
+                            <span style={{ color: 'var(--text-secondary)' }}>Stance: </span>
+                            <span style={{ color: 'var(--success-color)' }}>{(mockAnalysisResult as any).stance}</span>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div style={{ marginBottom: 8 }}>
+                            <span style={{ color: 'var(--text-secondary)' }}>Delivery: </span>
+                            <span style={{ color: 'var(--success-color)' }}>{(mockAnalysisResult as any).deliveryType}</span>
+                          </div>
+                          <div>
+                            <span style={{ color: 'var(--text-secondary)' }}>Run-up: </span>
+                            <span style={{ color: 'var(--success-color)' }}>{(mockAnalysisResult as any).runUp}</span>
+                          </div>
+                        </>
+                      )}
                     </div>
                   )}
                 </div>
@@ -414,7 +515,7 @@ const SwingAnalysis: React.FC = () => {
                   {!analysisComplete && !isAnalyzing && (
                     <button onClick={handleAnalyze} className="btn-primary" style={{ flex: 1 }}>
                       <Icon path={mdiCricket} size={0.75} style={{ marginRight: 8 }} />
-                      Analyze Swing
+                      {discipline === 'batting' ? 'Analyze Batting' : 'Analyze Bowling'}
                     </button>
                   )}
                   <button
