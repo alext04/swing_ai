@@ -246,12 +246,12 @@ const SwingAnalysis: React.FC = () => {
       {/* Page Header */}
       <div className="page-header">
         <h1 className="page-title">
-          <span className="gradient-text">Swing Analysis</span>
+          <span className="gradient-text">Batting Analysis</span>
         </h1>
-        <p className="page-subtitle">Upload your batting or bowling video for AI-powered analysis</p>
+        <p className="page-subtitle">Upload your batting video for AI-powered analysis</p>
       </div>
 
-      <div style={{ display: 'flex', gap: 12, marginBottom: 16 }}>
+      {/* <div style={{ display: 'flex', gap: 12, marginBottom: 16 }}>
         <button
           onClick={() => setDiscipline('batting')}
           style={{
@@ -278,11 +278,10 @@ const SwingAnalysis: React.FC = () => {
         >
           Bowling
         </button>
-      </div>
+      </div> */}
 
       <AnimatePresence mode="wait">
         {!videoUrl ? (
-          /* Upload Zone */
           <motion.div
             key="upload"
             initial={{ opacity: 0, y: 20 }}
@@ -303,15 +302,15 @@ const SwingAnalysis: React.FC = () => {
                 style={{ display: 'none' }}
                 onChange={(e) => e.target.files?.[0] && handleFileSelect(e.target.files[0])}
               />
-              <Icon path={mdiUpload} size={3} color="var(--primary-color)" />
+              <Icon path={mdiUpload} size={3} color={colors.bowling} />
               <h3 style={{ marginBottom: 8 }}>Drop your video here</h3>
               <p style={{ color: 'var(--text-secondary)', marginBottom: 16 }}>
                 or click to browse (MP4, MOV, AVI)
               </p>
               <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
-                <span className="badge badge-primary">Max 500MB</span>
-                <span className="badge badge-primary">HD Recommended</span>
-                <span className="badge badge-primary">Side/Front View</span>
+                <span className="badge" style={{ background: 'rgba(242, 181, 11, 0.2)', color: colors.bowling }}>Max 500MB</span>
+                <span className="badge" style={{ background: 'rgba(242, 181, 11, 0.2)', color: colors.bowling }}>HD Recommended</span>
+                <span className="badge" style={{ background: 'rgba(242, 181, 11, 0.2)', color: colors.bowling }}>Side/Rear View</span>
               </div>
             </div>
 

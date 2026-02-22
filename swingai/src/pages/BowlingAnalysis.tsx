@@ -220,7 +220,7 @@ const BowlingAnalysis: React.FC = () => {
                 onChange={(e) => e.target.files?.[0] && handleFileSelect(e.target.files[0])}
               />
               <Icon path={mdiUpload} size={3} color={colors.bowling} />
-              <h3 style={{ marginBottom: 8 }}>Drop your bowling video here</h3>
+              <h3 style={{ marginBottom: 8 }}>Drop your video here</h3>
               <p style={{ color: 'var(--text-secondary)', marginBottom: 16 }}>
                 or click to browse (MP4, MOV, AVI)
               </p>
@@ -231,26 +231,27 @@ const BowlingAnalysis: React.FC = () => {
               </div>
             </div>
 
+            {/* Tips Section */}
             <div className="grid-3" style={{ marginTop: 32 }}>
               <div className="card" style={{ padding: 24 }}>
-                <Icon path={mdiVideo} size={1.5} color={colors.bowling} style={{ marginBottom: 12 }} />
+                <div style={{ fontSize: '2.5rem', marginBottom: 12 }}>📹</div>
                 <h4 style={{ marginBottom: 8 }}>Recording Angle</h4>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.5 }}>
-                  Record from the side or rear for best results. Capture the full run-up and delivery stride.
+                  Record from the side or front for best results. Ensure the camera is at ground level.
                 </p>
               </div>
               <div className="card" style={{ padding: 24 }}>
-                <Icon path={mdiInformation} size={1.5} color={colors.bowling} style={{ marginBottom: 12 }} />
+                <div style={{ fontSize: '2.5rem', marginBottom: 12 }}>💡</div>
                 <h4 style={{ marginBottom: 8 }}>Lighting</h4>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.5 }}>
-                  Good lighting is crucial. Ensure clear visibility of your arm action and release point.
+                  Good lighting is crucial. Avoid shadows on your body and ensure clear visibility.
                 </p>
               </div>
               <div className="card" style={{ padding: 24 }}>
-                <Icon path={mdiCricket} size={1.5} color={colors.bowling} style={{ marginBottom: 12 }} />
-                <h4 style={{ marginBottom: 8 }}>Full Action</h4>
+                <div style={{ fontSize: '2.5rem', marginBottom: 12 }}>🏏</div>
+                <h4 style={{ marginBottom: 8 }}>Full Swing</h4>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.5 }}>
-                  Capture your complete bowling action from run-up to follow-through for comprehensive analysis.
+                  Capture your complete swing from stance to follow-through for comprehensive analysis.
                 </p>
               </div>
             </div>
