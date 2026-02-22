@@ -84,7 +84,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onToggle, onClose }) => {
       >
         <div className="sidebar-logo">
           <Icon path={mdiCricket} size={1} color={colors.primaryLight} />
-          <h1 style={{ position: 'relative', left: 1, fontSize: 20}}>Swing</h1><h1 style={{ color: colors.primaryLight, position: 'relative', right: 7, fontSize: 20.1, fontWeight: 400 }}>AI</h1>
+          <h1 style={{ position: 'relative', left: 1, fontSize: 20}}>Swing</h1><h1 style={{ color: colors.primaryLight, position: 'relative', right: 7, fontSize: 20}}>AI</h1>
         </div>
 
         <nav>

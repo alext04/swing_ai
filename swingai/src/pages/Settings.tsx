@@ -29,8 +29,8 @@ const Settings: React.FC = () => {
   });
 
   const [profile, setProfile] = useState({
-    name: 'Alex Thuruthel',
-    email: 'alex@example.com',
+    name: 'Jonathan Doeseph',
+    email: 'john_doe@example.com',
     battingStyle: 'Right-handed',
     role: 'Top Order Batsman',
     experience: '5 years'
@@ -143,7 +143,7 @@ const Settings: React.FC = () => {
                   fontWeight: 700,
                   color: 'white'
                 }}>
-                  AT
+                  JD
                 </div>
                 <div>
                   <button className="btn-primary" style={{ marginBottom: 8 }}>
